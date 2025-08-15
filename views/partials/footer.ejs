@@ -1,0 +1,150 @@
+<style>
+    footer {
+        background-color: var(--gold);
+        padding: 20px;
+        color: white;
+    }
+
+    .footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .footer>div {
+        flex: 1;
+    }
+
+    .footer-icon {
+        width: 70%;
+        margin: 0px 15%;
+    }
+
+    .footer-socials {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin: 20px 0;
+        flex-wrap: wrap;
+    }
+
+    .footer-socials a {
+        border: 1px solid var(--white);
+        border-radius: 30px;
+        padding: 5px 15px;
+    }
+
+    .footer>div:nth-of-type(2) {
+        padding-left: 20%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    footer p {
+        margin-top: 20px;
+    }
+
+
+
+
+    .rights {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        border-top: 1px solid white;
+        padding-top: 20px;
+        width: 100%;
+        flex-wrap: wrap;
+        column-gap: 30px;
+        margin-top: 20px
+    }
+
+    @media (max-width: 900px) {
+        .footer {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<%- include('contact-btn') %>
+
+<footer>
+
+    <div class="footer">
+        <div>
+            <a href="/"><img class="footer-icon" src="img/logo.png"></a>
+
+            <div class="footer-socials">
+
+                <a target="_blank" href="//www.facebook.com/alyasavillage">facebook</a>
+                <a target="_blank" href="//www.instagram.com/alyasavillage">instagram</a>
+                <a target="_blank" href="//www.youtube.com/channel/UC95fmJSUmd5U6zX8uf72QBg">youtube</a>
+                <a target="_blank" href="//www.linkedin.com/company/alyasavillage/?viewAsMember=true">linkedin</a>
+            </div>
+        </div>
+        <div>
+            <h2>Contact Us</h2>
+            <p>Address</p>
+            <a href="https://maps.app.goo.gl/3CZ36SiP7vrUv8Mm6">Saqi Rechmaiya, Jbeil, Lebanon </a>
+            <p class="titre_">Phone</p>
+            <a href="tel:+961 71 71 58 71">+961 71 71 58 71</a>
+            <p class="titre_">Email Address</p>
+            <a href="mailto:hello@alyasavillage.com">hello@alyasavillage.com</a>
+        </div>
+    </div>
+    <div class="rights">
+        <a>Terms & Conditions</a>
+        All rights reserved &copy; <%= new Date().getFullYear() %> Alyasa Village
+            <a>Privacy & Security Policies</a>
+    </div>
+</footer>
+
+<!--script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', function() {
+        const imageUrl = img.src;
+
+        // Create minimal HTML content to embed the image
+        const popupHtml = `
+          <html>
+            <head>
+              <title>Image Preview</title>
+              <style>
+                body, html {
+                  margin: 0; padding: 0; height: 100%; background: #111; display: flex; 
+                  justify-content: center; align-items: center;
+                }
+                img {
+                  max-width: 100%; max-height: 100%;
+                  object-fit: contain;
+                  display: block;
+                }
+              </style>
+            </head>
+            <body>
+              <img src="${imageUrl}" alt="Preview" />
+            </body>
+          </html>
+        `;
+
+        // Open a blank popup window
+        const popup = window.open('', 'imagePopup', 'width=800,height=600,top=100,left=100,resizable=yes,scrollbars=yes');
+
+        // Write the HTML content into the popup
+        if (popup) {
+          popup.document.write(popupHtml);
+          popup.document.close();
+        } else {
+          alert('Popup blocked! Please allow popups for this site.');
+        }
+      });
+    });
+  });
+</script-->
+

@@ -1,0 +1,242 @@
+<%- include('partials/s-top') %>
+  <link rel="stylesheet" href="/css/home.css">
+
+  <div class="banner" style="background-image: url('img/home-banners/1.avif');">
+    <%- include('partials/header') %>
+      <div>
+        <div class="banner-images">
+          <% for (let i=1; i <=4; i++) { %>
+            <img class="<%= i === 1 ? 'active' : '' %>" src="img/home-banners/<%= i %>.avif">
+            <% } %>
+        </div>
+        <div class="banner-book">
+          <button>your dates</button>
+          <button>2 adults 2 children</button>
+          <button class="book-now">Book Now</button>
+        </div>
+      </div>
+  </div>
+
+  <div class="intro">
+    <h1>
+      <%= home.name %>
+    </h1>
+    <p><%- home.description %></p>
+    <div class="intro-gallery">
+      <% for (let i=1; i <=10; i++) { %>
+        <img src="img/home-gallery/<%= i %>.avif">
+        <% } %>
+    </div>
+  </div>
+  <br><br>
+  <div class="venues" id="venues">
+    <h1>Our Venues</h1>
+    <a href="/<%= venues[0].code %>" class="venues-image"
+      style="background-image: url('img/<%= venues[0].code %>/1.png');">
+    </a>
+    <div class="venues-tabs">
+      <% venues.forEach(function(venue, i) { %>
+        <div info="<%= venue.code %>" class="<%= i === 0 ? 'active' : '' %>" img="img/<%= venue.code %>/1.png">
+          <%= venue.name %>
+        </div>
+        <% }); %>
+    </div>
+    <% venues.forEach(function(venue, i) { %>
+      <div class="venue-info <%= i === 0 ? 'active' : '' %>" id="<%= venue.code %>">
+        <p>
+          <%= venue.description %>
+        </p>
+        <% if (Array.isArray(venue.features)) { %>
+          <% venue.features.forEach(function(tag) { %>
+            <span>
+              <%= tag %>
+            </span>
+            <% }); %>
+              <% } %>
+
+      </div>
+      <% }); %>
+  </div>
+  <h1>Our accommodations</h1>
+  <div class=" accommodations">
+
+    <div class="accomodations-img slider">
+      <% for (let accomodation of accomodations) { %>
+        <div style="background-image: url('img/<%= accomodation.code %>/1.jpg');">
+          <span>
+            <%= accomodation.tag %>
+          </span>
+          <h2>
+            <%= accomodation.name %>
+          </h2>
+          <p>
+            <%= accomodation.description %>
+          </p>
+        </div>
+        <% } %>
+    </div>
+    <div>
+      <div class="gal slider">
+        <% for (let accomodation of accomodations) { %>
+          <img src="img/<%= accomodation.code %>/2.jpg">
+          <% } %>
+      </div>
+      <div class="gal slider">
+        <% for (let accomodation of accomodations) { %>
+          <img src="img/<%= accomodation.code %>/3.jpg">
+          <% } %>
+      </div>
+      <div class="gal slider">
+        <% for (let accomodation of accomodations) { %>
+          <img src="img/<%= accomodation.code %>/4.jpg">
+          <% } %>
+      </div>
+<div class="acc-info slider">
+  <% for (let accomodation of accomodations) { %>
+    <div class="single-acc-ing">
+      <% if (Array.isArray(accomodation.features)) { %>
+        <% accomodation.features.forEach(function(feature) { %>
+          <span><%= feature %></span>
+        <% }); %>
+      <% } else if (typeof accomodation.features === 'string') { %>
+        <% accomodation.features.split(',').forEach(function(feature) { %>
+          <span><%= feature.trim() %></span>
+        <% }); %>
+      <% } %>
+    </div>
+  <% } %>
+</div>
+
+      <div class="acc-buttons">
+        <button class="acc-book">Book Now</button>
+        <button class="acc-more">More Info</button>
+        <svg onclick="moveGallery('slider', -1)" viewBox="0 0 100 60">
+          <path d="M25 30 L70 30 M70 30 L55 15 M70 30 L55 45" />
+        </svg>
+        <svg onclick="moveGallery('slider', 1)" viewBox="0 0 100 60">
+          <path d="M25 30 L70 30 M70 30 L55 15 M70 30 L55 45" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="occasions">
+    <h3>Special Occasions</h3>
+    <% for(let occasion of occasions) { %>
+      <div class="occasion" style="background-image: url('img/occasions/<%= occasion.code %>.avif');">
+        <h3>
+          <%= occasion.name %>
+        </h3>
+        <p>
+          <%= occasion.description %>
+        </p>
+      </div>
+      <% } %>
+  </div>
+
+  <div class="activities">
+    <div>
+      <% for (let i=0; i < activities.length; i++) { %>
+        <div class="activity <%= i === 0 ? 'active' : '' %>" img="img/activities/<%= activities[i].code %>.png">
+          <h4>
+            <%= activities[i].name %>
+          </h4>
+          <p>
+            <%= activities[i].description %>
+          </p>
+        </div>
+        <% } %>
+    </div>
+    <div style="background-image: url('img/activities/<%= activities[0].code %>.png');"></div>
+  </div>
+
+
+  <style>
+    .map {
+      background-image: url(/img/map.png);
+      aspect-ratio: 7 / 5;
+      background-size: contain;
+      background-position: center;
+      position: relative;
+      margin: 25px 10%;
+    }
+
+    .map div {
+      width: 20px;
+      height: 20px;
+      background-color: royalblue;
+      border: 2px solid #ffedb1;
+      border-radius: 50px;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .map div a {
+      position: absolute;
+      display: none;
+      background-color: antiquewhite;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 5px;
+
+    }
+
+    .map div:hover a {
+      display: block;
+    }
+  </style>
+
+  <div class="map">
+    <% for(let m of mapData) { %>
+      <div style="left: <%= m.left %>%; top: <%= m.top %>%;">
+        <a target="_blank" href="<%= m.url %>">
+          <%= m.name %>
+        </a>
+      </div>
+      <% } %>
+  </div>
+
+
+  <link rel="stylesheet"
+    href="https://www.alyasavillage.com/wp-content/uploads/trustindex-google-widget.css?1755074355">
+  <style>
+    .ti-widget.ti-goog .ti-controls .ti-next {
+      right: 7%;
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      outline-style: none;
+      border: 2px solid black;
+    }
+
+    .ti-widget.ti-goog .ti-controls .ti-prev {
+      left: 7%;
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      outline-style: none;
+      border: 2px solid black;
+    }
+  </style>
+  <%- review %>
+    <script src="https://cdn.trustindex.io/loader.js"></script>
+
+
+    <div class="nightlife">
+      <% for (let nl of nightlife) { %>
+        <div style="background-image: url('img/nightlife/<%= nl.code %>.avif');">
+          <h2>
+            <%= nl.name %>
+          </h2>
+          <p>
+            <%= nl.description %>
+          </p>
+        </div>
+        <% } %>
+    </div>
+
+    <script src="/script/home.js"></script>
+
+    <%- include('partials/footer') %>

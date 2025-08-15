@@ -1,0 +1,63 @@
+<%- include('partials/s-top') %>
+<link rel="stylesheet" href="/css/venue.css">
+<nav>
+  <a href="/"><img src="/img/s-logo.png" class="logo"></a>
+  <% for (let v of venues) { %>
+  <a href="/<%= v.code %>" class="<%= venue.code === v.code ? 'active' : '' %>">
+    <%= venue.name %>
+  </a>
+  <% } %>
+
+  <select name="cars" id="cars" onchange="window.location.href=this.value">
+    <% for (let v of venues) { %>
+    <option value="/<%= v.code %>" <%=venue.code===v.code ? 'selected' : '' %>>
+      <%= v.name %>
+    </option>
+    <% } %>
+  </select>
+</nav>
+<div class="venue">
+  <div class="gallery" style="background-image: url('/img/<%= venue.code %>/G1.jpg');">
+    <div class="controller">
+      <div class="slider">
+        <% for (let i=1; i <=3; i++) { %>
+        <img src="/img/<%= venue.code %>/G<%= i %>.jpg">
+        <% } %>
+        <div class="plus-img">+7
+          <% for (let i=4; i <=10; i++) { %>
+          <img src="/img/<%= venue.code %>/G<%= i %>.jpg">
+          <% } %>
+        </div>
+      </div>
+      <svg onclick="moveGallery(-1)" viewBox="0 0 100 60">
+        <path d="M25 30 L70 30 M70 30 L55 15 M70 30 L55 45" />
+      </svg>
+      <svg onclick="moveGallery(1)" viewBox="0 0 100 60">
+        <path d="M25 30 L70 30 M70 30 L55 15 M70 30 L55 45" />
+      </svg>
+    </div>
+    <h3><%= venue.name %></h3>
+    <p><%= venue.description %></p>
+  </div>
+  <div class="numbers">
+    <div class="label">Capacity</div>
+    <div class="data"><%= venue.capacity %></div>
+    <div class="label">Surface</div>
+    <div class="data"><%= venue.surface %> sqm</div>
+  </div>
+  <div class="features">
+    <% for (let feature of venue.features) { %>
+    <span><%= feature %></span>
+    <% } %>
+  </div>
+  <div class="events">
+    <% for (let event of venue.events) { %>
+    <span><%= event %></span>
+    <% } %>
+  </div>
+  <div class="div5"></div>
+</div>
+
+<script src="/script/venue.js"></script>
+
+<%- include('partials/s-bottom') %>

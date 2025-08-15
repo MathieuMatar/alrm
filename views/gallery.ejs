@@ -1,0 +1,37 @@
+<%- include('partials/s-top') %>
+    <div
+        style="background-image: url(/img/banners/gallery.jpg); min-height: 25vh; background-size: cover; background-position: center;">
+        <%- include('partials/header') %>
+    </div>
+    <!--br><br><br><br-->
+
+    <style>
+        .gallery {
+            column-count: 5;
+            /* Or auto with media queries */
+            column-gap: 0px;
+        }
+
+        .gallery img {
+            width: 100%;
+            margin-bottom: 0px;
+            display: block;
+        }
+    </style>
+
+    <div class="gallery">
+        <% for (let image of gallery) { %>
+            <img src="<%= image %>">
+            <% } %>
+    </div>
+
+    <style>
+        footer {
+            margin-top: -350px;
+            z-index: 1;
+            position: relative;
+        }
+    </style>
+
+    <%- include('partials/footer') %>
+        <%- include('partials/s-bottom') %>

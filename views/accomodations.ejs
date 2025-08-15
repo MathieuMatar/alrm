@@ -1,0 +1,42 @@
+<%- include('partials/s-top') %>
+    <link rel="stylesheet" href="/css/accomodations.css">
+    <div
+        style="background-image: url(/img/banners/accommodation.jpg); min-height: 45vh; background-size: cover; background-position: center;">
+        <%- include('partials/header') %>
+    </div>
+    <h1 id="title">
+        <%= intro.name %>
+    </h1>
+    <p id="description">
+        <%= intro.description %>
+    </p>
+    <div class="accomodations">
+        <% for (let accomodation of accomodations) { %>
+            <a href="/accommodations/<%= accomodation.code %>" title="<%= accomodation.name %>"
+                description="<%= accomodation.description %>"
+                style="background-image: url('/img/<%= accomodation.code %>/1.jpg');" id="r<%= accomodation.id %>">
+                <%= accomodation.name %>
+            </a>
+            <% } %>
+    </div>
+    <a title="<%= intro.name %>" description="<%= intro.description %>" href="/accommodations" id="show-all">ALL</a>
+    <div class="rooms">
+        <%for (let room of rooms) { %>
+            <a acc="r<%= room.accomodationId %>" href="/accommodations/<%= room.accomodationCode %>/<%= room.code %>">
+                <div class="room-img" style="background-image: url('/img/rooms/<%= room.code %>/1.jpg');">
+                    <span>info info</span>
+                    View Details
+                </div>
+                <strong>
+                    <%= room.name %>
+                </strong>
+                <p>$100/night</p>
+            </a>
+            <% } %>
+    </div>
+
+    <script src="/script/acommodations.js"></script>
+
+
+    <%- include('partials/footer') %>
+    <%- include('partials/s-bottom') %>

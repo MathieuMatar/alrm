@@ -1,0 +1,62 @@
+<style>
+    .moving-menu {
+        position: sticky;
+        top: 20px;
+        float: right;
+        display: flex;
+        align-content: center;
+        justify-content: flex-end;
+        border-radius: 30px;
+        background-color: #adadad;
+        overflow: hidden;
+        margin: 20px;
+    }
+
+
+
+
+    .moving-menu a {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 15px;
+        white-space: nowrap;
+
+
+    }
+
+    .moving-menu svg {
+        cursor: pointer;
+        padding: 5px 20px;
+        background-color: #4d4d4d;
+    }
+
+
+
+    .moving-menu-links {
+        max-width: 0px;
+        overflow: hidden;
+        display: flex;
+        gap: 20px;
+        transition: all 0.7s ease-in-out;
+
+    }
+
+    .moving-menu:hover .moving-menu-links {
+        max-width: 5000px;
+    }
+</style>
+
+<div class="moving-menu">
+    <div class="moving-menu-links">
+        <a href="https://www.alyasavillage.com/venues/" aria-current="page">Venues</a>
+        <a href="https://www.alyasavillage.com/accommodations/">Accommodations</a>
+        <a href="https://www.alyasavillage.com/activities/">Activities</a>
+        <a href="https://www.alyasavillage.com/special-occasions/">Special Occasions</a>
+        <a href="https://www.alyasavillage.com/nightlife/">Nightlife</a>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" fill="white">
+        <path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
+    </svg>
+
+</div>

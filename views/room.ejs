@@ -1,0 +1,51 @@
+<%- include('partials/s-top') %>
+<link rel="stylesheet" href="/css/room.css">
+<style id="background-style">
+  html {
+    background-image: url('/img/rooms/<%= room.code %>/G1.jpg');
+  }
+</style>
+<header class="single-item-menu">
+  <a href="/"><img width="150" src="/img/logo.png"><%= room.name %></a></a>
+  <div class="tabs">
+    <button class="tab active" data-tab="room">Room</button>
+    <button class="tab" data-tab="details">Details</button>
+    <button class="tab" data-tab="gallery">Gallery</button>
+  </div>
+  <a class="close" href="/accommodations/<%= code %>">
+    <svg viewBox="0 -960 960 960" fill="#000000">
+      <path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" />
+    </svg>
+  </a>
+</header>
+<div class="single-tab active" id="room">
+  <h1><%= room.name %></h1>
+  <p><%= room.description %></p>
+</div>
+<div class="single-tab" id="details">
+  <h1><%= room.name%></h1>
+  <h3>Details</h3>
+  <div class="features">
+    <% room.features.forEach(function(feature) { %>
+    <span><%= feature %></span>
+    <% }); %>
+  </div>
+</div>
+<div class="single-tab" id="gallery">
+  <svg id="left" viewBox="0 -960 960 960">
+    <path d="M424-56 0-480l424-424 80 81-343 343 343 343-80 81Z" />
+  </svg>
+  <svg id="right" viewBox="0 -960 960 960">
+    <path d="m304-58-80-81 343-343-343-343 80-81 424 424L304-58Z" />
+  </svg>
+  <% for (let i=1; i <=6; i++) { %>
+  <img class="<%= i === 1 ? 'active' : '' %>" src="/img/rooms/<%= room.code %>/G<%= i %>.jpg">
+  <% } %>
+</div>
+<div class="book">
+  <button>Your dates</button>
+  <button>2 adults 2 children</button>
+  <button class="book-now">Book Now</button>
+</div>
+<script src="/script/room.js"></script>
+<%- include('partials/s-bottom') %>

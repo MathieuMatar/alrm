@@ -1,0 +1,217 @@
+html {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+body {
+    border: 3px solid white;
+    margin: 70px;
+    border-radius: 50px;
+    height: -webkit-fill-available;
+    position: relative;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a:first-child {
+    display: flex;
+    align-items: center;
+    color: var(--gold);
+    font-size: 1.6em;
+    font-family: "Bacalisties", sans-serif;
+    font-weight: bolder;
+    text-shadow: 0 0 9px var(--black);
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: rgb(99, 99, 99);
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button.active {
+    color: black;
+}
+
+button.active::before {
+    content: "● ";
+    color: rgb(215, 230, 128);
+    font-size: 1em;
+    margin-right: 0.5em;
+}
+
+.close {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    background-color: white;
+    padding: 5px;
+    width: 40px;
+    margin-right: 25px;
+}
+
+.book {
+    background-color: var(--white);
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden;
+    width: fit-content;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 55%);
+    display: flex;
+    white-space: nowrap;
+}
+
+.book button {
+    background-color: transparent;
+    border: none;
+    padding: 7px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--dark-gray);
+}
+
+.book-now {
+    background-color: var(--gray) !important;
+    color: var(--white) !important;
+}
+
+.book-now:hover {
+    background-color: var(--dark-gray) !important;
+    color: var(--white) !important;
+}
+
+.single-tab {
+    display: none;
+    padding: 25px;
+    text-align: center;
+    color: white;
+}
+
+.single-tab.active {
+    display: block;
+}
+
+.single-tab p {
+    font-size: 1.3em;
+    text-shadow: 0 0 9px var(--black);
+}
+
+.single-tab h3 {
+    text-shadow: 0 0 9px var(--black);
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+span {
+    border: 1px solid #d7e680;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2px);
+    color: black;
+}
+
+#gallery img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 6px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: border 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+#gallery img.active {
+    border: 3px solid white;
+    width: 130px;
+    height: 90px;
+}
+
+#gallery {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#gallery svg {
+    height: 50px;
+    fill: white;
+    cursor: pointer;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#left {
+    left: 100px;
+}
+
+#right {
+    right: 100px;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        margin: 10px;
+        margin-bottom: 30px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .close {
+        position: absolute;
+        right: 0;
+        margin: 20px;
+    }
+
+    .book-now {
+        color: white !important;
+        padding: 10px 20px !important;
+
+    }
+
+    .book button:not(.book-now) {
+        display: none;
+    }
+
+    #gallery img {
+        width: 90px;
+        height: 65px;
+    }
+
+    #gallery img.active {
+        width: 100px;
+        height: 70px;
+    }
+
+    #left {
+        left: 25px;
+    }
+
+    #right {
+        right: 25px;
+    }
+}

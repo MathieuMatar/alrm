@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<% var seo = typeof seo !== 'undefined' ? seo : {}; %>
+
+<% if (seo.meta && seo.meta.charset) { %>
+  <meta charset="<%= seo.meta.charset %>">
+<% } %>
+<% if (seo.meta && seo.meta.viewport) { %>
+  <meta name="viewport" content="<%= seo.meta.viewport %>">
+<% } %>
+<% if (seo.meta && seo.meta.viewTransition) { %>
+  <meta name="view-transition" content="<%= seo.meta.viewTransition %>">
+<% } %>
+<% if (seo.meta && seo.meta.description) { %>
+  <meta name="description" content="<%= seo.meta.description %>">
+<% } %>
+<% if (seo.meta && seo.meta.keywords) { %>
+  <meta name="keywords" content="<%= seo.meta.keywords %>">
+<% } %>
+<% if (seo.meta && seo.meta.author) { %>
+  <meta name="author" content="<%= seo.meta.author %>">
+<% } %>
+<% if (seo.meta && seo.meta.robots) { %>
+  <meta name="robots" content="<%= seo.meta.robots %>">
+<% } %>
+
+<% if (seo.title) { %>
+  <title><%= seo.title %></title>
+<% } %>
+<% if (seo.canonical) { %>
+  <link rel="canonical" href="<%= seo.canonical %>">
+<% } %>
+
+<!-- Open Graph -->
+<% if (seo.openGraph && seo.openGraph.title) { %>
+  <meta property="og:title" content="<%= seo.openGraph.title %>">
+<% } %>
+<% if (seo.openGraph && seo.openGraph.description) { %>
+  <meta property="og:description" content="<%= seo.openGraph.description %>">
+<% } %>
+<% if (seo.openGraph && seo.openGraph.image) { %>
+  <meta property="og:image" content="<%= seo.openGraph.image %>">
+<% } %>
+<% if (seo.openGraph && seo.openGraph.url) { %>
+  <meta property="og:url" content="<%= seo.openGraph.url %>">
+<% } %>
+<% if (seo.openGraph && seo.openGraph.type) { %>
+  <meta property="og:type" content="<%= seo.openGraph.type %>">
+<% } %>
+
+<!-- Twitter -->
+<% if (seo.twitter && seo.twitter.card) { %>
+  <meta name="twitter:card" content="<%= seo.twitter.card %>">
+<% } %>
+<% if (seo.twitter && seo.twitter.title) { %>
+  <meta name="twitter:title" content="<%= seo.twitter.title %>">
+<% } %>
+<% if (seo.twitter && seo.twitter.description) { %>
+  <meta name="twitter:description" content="<%= seo.twitter.description %>">
+<% } %>
+<% if (seo.twitter && seo.twitter.image) { %>
+  <meta name="twitter:image" content="<%= seo.twitter.image %>">
+<% } %>
+
+<% if (seo.favicon) { %>
+  <link rel="icon" href="<%= seo.favicon %>" type="image/x-icon">
+<% } %>
+
+<% if (seo.fonts && seo.fonts[0]) { %>
+  <link rel="preconnect" href="<%= seo.fonts[0] %>">
+<% } %>
+<% if (seo.fonts && seo.fonts[1]) { %>
+  <link rel="preconnect" href="<%= seo.fonts[1] %>" crossorigin>
+<% } %>
+<% if (seo.googleFontLink) { %>
+  <link href="<%= seo.googleFontLink %>" rel="stylesheet">
+<% } %>
+<% if (seo.stylesheet) { %>
+  <link rel="stylesheet" href="<%= seo.stylesheet %>">
+<% } %>
+
+<link rel="stylesheet" href="/css/style.css">
+
+<% if (seo.structuredData) { %>
+  <script type="application/ld+json">
+    <%= JSON.stringify(seo.structuredData) %>
+  </script>
+<% } %>
+
+
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.startViewTransition(() => {
+        // Update DOM here
+        document.body.classList.toggle('dark');
+    });
+
+</script>
+
+<style>
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 1.5s;
+        animation-timing-function: ease;
+    }
+
+    ::view-transition-old(root) {
+        animation-name: fade-out;
+    }
+
+    ::view-transition-new(root) {
+        animation-name: fade-in;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade-out {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+</style>
+
+<body>
