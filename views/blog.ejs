@@ -1,0 +1,153 @@
+<%- include('partials/s-top') %>
+    <link rel="stylesheet" href="/css/activities.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div style="background: var(--gold);">
+        <%- include('partials/header') %>
+    </div>
+
+
+    <style>
+        section {
+            display: flex;
+            gap: 30px;
+            padding: 60px;
+        }
+
+        main {
+            flex: 3;
+        }
+
+        aside {
+            flex: 1;
+        }
+
+        .title {
+            display: flex;
+            height: 50px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .title::after {
+            content: "";
+            border-top: 1px solid #9E9E9E;
+            width: 100%;
+            margin-left: 25px;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+
+        .single {
+            background-image: url(https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70);
+            padding: 20px;
+            border-radius: 20px;
+            max-width: 300px;
+            width: 32%;
+            aspect-ratio: 2 / 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .single span {
+            background: white;
+            color: black;
+            border-radius: 7px;
+            padding: 5px 10px;
+            width: fit-content;
+            margin-bottom: 20px;
+        }
+
+        .single:hover {
+            transform: translateY(-10px);
+        }
+
+        .aside-single {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .aside-single img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 15px;
+        }
+
+        .aside-single span {
+            color: var(--gray);
+        }
+
+        .aside-single p {
+            font-weight: bold;
+        }
+    </style>
+
+
+    <section>
+        <main>
+            <div class="title">
+                <h2>Blog</h2>
+            </div>
+
+            <div class="content">
+                <% for (let i=0; i < 15; i++) { %>
+                    <div class="single">
+                        <span>Blog type</span>
+                        <h4>Blog Post Title</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                    <% } %>
+            </div>
+        </main>
+        <aside>
+            <div class="title">
+                <h3>Featured</h3>
+            </div>
+            <% for (let i=0; i < 3; i++) { %>
+            <div class="aside-single">
+                <img
+                    src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+                <div>
+                    <span>00/00/00</span>
+                    <p>Blog Post Title Blog Post Title Blog Post Title Blog Post Title</p>
+                </div>
+            </div>
+            <% } %>
+
+            <div class="title">
+                <h3>Latest</h3>
+            </div>
+            <% for (let i=0; i < 5; i++) { %>
+            <div class="aside-single">
+                <img
+                    src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+                <div>
+                    <span>00/00/00</span>
+                    <p>Blog Post Title Blog Post Title Blog Post Title Blog Post Title</p>
+                </div>
+            </div>
+            <% } %>
+
+        </aside>
+    </section>
+
+
+
+
+
+    <%- include('partials/footer') %>
+        <%- include('partials/s-bottom') %>

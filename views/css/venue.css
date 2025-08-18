@@ -57,8 +57,24 @@ body {
     grid-area: 2 / 2 / 3 / 3;
 }
 
-.div5 {
+.map {
     grid-area: 2 / 3 / 3 / 4;
+}
+
+.map > div {
+    background-image: url(/img/map.png);
+    background-size: 1000px;
+    height: -webkit-fill-available;
+    border-radius: 12px;
+    position: relative;
+}
+
+.map svg {
+    /*center it in parent div*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .controller svg {
@@ -272,7 +288,7 @@ nav select {
         grid-area: 3 / 1 / 4 / 2;
     }
 
-    .div5 {
+    .map {
         grid-area: 3 / 2 / 4 / 3;
     }
 

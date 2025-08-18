@@ -1,0 +1,371 @@
+<%- include('partials/s-top') %>
+    <link rel="stylesheet" href="/css/activities.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div
+        style="background-image: url(/img/banners/activities.jpg); min-height: 100vh; background-size: cover; background-position: center;">
+        <%- include('partials/header') %>
+    </div>
+
+    <style>
+        body {
+            background-color: #edebe7;
+        }
+
+        .slider-container {
+            position: relative;
+        }
+
+        .slider {
+            position: relative;
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+        }
+
+        .slider-container svg {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .slider-container svg:first-of-type {
+            left: 50px;
+            display: none;
+        }
+
+        .slider-container svg:last-of-type {
+            right: 50px;
+        }
+
+
+
+        .section-info {
+            width: 300px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-info span {
+            background-color: white;
+            padding: 5px 15px;
+            font-size: 20px;
+            border-radius: 30px;
+            color: #da5f65;
+            font-weight: bold;
+            display: block;
+            width: fit-content;
+            margin-bottom: 40px;
+        }
+
+        .section-info strong {
+            margin-top: 30px;
+            display: block;
+        }
+
+        .section-item {
+            width: 300px;
+            height: 440px;
+            border-radius: 20px;
+            background-size: cover;
+            display: flex;
+            align-items: flex-end;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .section-item>div {
+            width: 100%;
+            border-radius: 20px;
+            height: 170px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .slider {
+            overflow: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .section-item>div:hover {
+            height: 250px;
+        }
+
+        .section-item:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+
+    <div class="slider-container">
+
+        <div class="slider">
+            <div class="section-info">
+                <span>text info</span>
+                <h2>fsjdfskdjfh</h2>
+                <p>kafkdjhfkjhksjhdfkjh</p>
+                <strong>sfhskdfhksjhfkdjfh</strong>
+            </div>
+            <% const colors=[ '#ea6060' , '#fbc548' , '#54bfbe' , '#5d9cec' , '#a768d5' , '#4ec27f' , '#f2855e'
+                , '#d98cb3' , '#7e7e7e' , '#b5cc4a' ]; %>
+
+                <% for (let i=0; i < 10; i++) { %>
+                    <div class="section-item"
+                        style="background-image: url(https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70);">
+                        <div style="background-color: <%= colors[i % colors.length] %>;">
+                            <h3>kdjh kjh fsdhjf</h3>
+                            kjhkjhkhkfjdhfs
+                        </div>
+                    </div>
+                    <% } %>
+
+        </div>
+    </div>
+
+
+
+
+    <style>
+        .cards {
+            height: 440px;
+            display: flex;
+            margin: 30px;
+            display: flex;
+        }
+
+        .cards>* {
+            height: 100%;
+            border-radius: 30px;
+        }
+
+        .card1 {
+            background-color: #dfddd6;
+            width: 35%;
+        }
+
+        .card2 {
+            width: calc(40% + 50px);
+            margin-left: -50px;
+        }
+
+        .card3 {
+            background-color: white;
+            width: calc(25% + 50px);
+            margin-left: -50px;
+            padding: 30px;
+        }
+
+        .cards .section-info {
+            height: 100%;
+            max-width: 400px;
+        }
+    </style>
+
+
+
+
+    <div class="cards">
+        <div class="card1">
+            <div class="section-info">
+                <span>text info</span>
+                <h2>fsjdfskdjfh</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                <strong>sfhskdfhksjhfkdjfh</strong>
+            </div>
+
+        </div>
+        <img class="card2"
+            src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+
+        <div class="card3">
+            <strong>title gfgljlkjg</strong>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="section-info" style="margin: 0 auto; text-align: center; display: flex; align-items: center;">
+        <span>text info</span>
+        <h2>fsjdfskdjfh</h2>
+        <p>kafkdjhfkjhksjhdfkjh</p>
+    </div>
+    <div class="slider-container">
+
+        <div class="slider">
+            <% for (let i=0; i < 15; i++) { %>
+                <div class="section-item"
+                    style="background-image: url(https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70); width: 360px;">
+                    <div
+                        style="background-color: white; height: 90px; display: flex; align-items: center; justify-content: center;">
+                        <strong>kdjh kjh fsdhjf</strong>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+
+    <style>
+        .image-container {
+            display: flex;
+            height: 500px;
+            gap: 30px;
+        }
+
+        .image-container img {
+            border-radius: 20px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+
+
+
+
+
+    <div class="slider-container" style="background-color: #f3d4d0; margin: 30px; border-radius: 20px;">
+        <div class="slider">
+            <div class="section-info">
+                <span>text info</span>
+                <h2>fsjdfskdjfh</h2>
+                <p>kafkdjhfkjhksjhdfkjh</p>
+                <strong>sfhskdfhksjhfkdjfh</strong>
+            </div>
+            <div class="image-container">
+                <% for (let i=0; i < 5; i++) { %>
+                    <div class="triple" style="gap: 30px; display: flex; flex-direction: column; height: 100%;">
+                        <div style="display: flex; gap: 30px; height: calc( 33.33333333333% - 15px);">
+                            <img
+                                src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+                            <img
+                                src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+                        </div>
+                        <img style="height: calc( 66.66666666666666666666666% - 15px);"
+                            src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+                    </div>
+                    <div class="double" style="display: flex; gap: 30px; height: 100%; flex-direction: column;">
+                        <img style="height: calc( 50% - 15px);"
+                            src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+                        <img style="height: calc( 50% - 15px);"
+                            src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+                    </div>
+                    <div class="triple" style="gap: 30px; display: flex; flex-direction: column; height: 100%;">
+                        <img style="height: calc( 66.66666666666666666666666% - 15px);"
+                            src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+                        <div style="display: flex; gap: 30px; height: calc( 33.33333333333% - 15px);">
+                            <img
+                                src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+                            <img
+                                src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+                        </div>
+                    </div>
+                    <img style=""
+                        src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+
+
+                    <% } %>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="slider-container">
+        <div class="slider">
+            <div class="section-info">
+                <span>text info</span>
+                <h2>fsjdfskdjfh</h2>
+                <p>kafkdjhfkjhksjhdfkjh</p>
+                <strong>sfhskdfhksjhfkdjfh</strong>
+            </div>
+            <% for (let i=0; i < 15; i++) { %>
+                <div class="section-item"
+                    style="height: 380px; background-image: url(https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70);">
+                    <div style="background-color: #dedcd6;">
+                        <h3>kdjh kjh fsdhjf</h3>
+                        kjhkjhkhkfjdhfs
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+
+    <script>
+        const scrollAmount = 200;
+
+        // Get all slider containers
+        const sliderContainers = document.querySelectorAll('.slider-container');
+
+        sliderContainers.forEach(container => {
+            const slider = container.querySelector('.slider');
+
+            // Create left arrow
+            const leftArrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            leftArrow.setAttribute('viewBox', '0 0 36 36');
+            leftArrow.classList.add('left');
+            leftArrow.style.display = 'none';
+            leftArrow.innerHTML = `<path d="M21.559,12.062 L15.618,17.984 L21.5221,23.944 C22.105,24.533 22.1021,25.482 21.5131,26.065 C21.2211,26.355 20.8391,26.4999987 20.4571,26.4999987 C20.0711,26.4999987 19.6851,26.352 19.3921,26.056 L12.4351,19.034 C11.8531,18.446 11.8551,17.4999987 12.4411,16.916 L19.4411,9.938 C20.0261,9.353 20.9781,9.354 21.5621,9.941 C22.1471,10.528 22.1451,11.478 21.5591,12.062 L21.559,12.062 Z"></path>`;
+            leftArrow.style.position = 'absolute';
+            leftArrow.style.left = '50px';
+            leftArrow.style.cursor = 'pointer';
+
+            // Create right arrow
+            const rightArrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            rightArrow.setAttribute('viewBox', '0 0 36 36');
+            rightArrow.classList.add('right');
+            rightArrow.innerHTML = `<path d="M23.5587,16.916 C24.1447,17.4999987 24.1467,18.446 23.5647,19.034 L16.6077,26.056 C16.3147,26.352 15.9287,26.4999987 15.5427,26.4999987 C15.1607,26.4999987 14.7787,26.355 14.4867,26.065 C13.8977,25.482 13.8947,24.533 14.4777,23.944 L20.3818,17.984 L14.4408,12.062 C13.8548,11.478 13.8528,10.5279 14.4378,9.941 C15.0218,9.354 15.9738,9.353 16.5588,9.938 L23.5588,16.916 L23.5587,16.916 Z"></path>`;
+            rightArrow.style.position = 'absolute';
+            rightArrow.style.right = '50px';
+            rightArrow.style.cursor = 'pointer';
+
+            // Insert arrows into container
+            container.insertBefore(leftArrow, container.firstChild);
+            container.appendChild(rightArrow);
+
+            // Scroll events
+            rightArrow.addEventListener('click', () => {
+                slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            leftArrow.addEventListener('click', () => {
+                slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            slider.addEventListener('scroll', () => {
+                leftArrow.style.display = slider.scrollLeft > 0 ? 'block' : 'none';
+                rightArrow.style.display = slider.scrollLeft + slider.clientWidth < slider.scrollWidth ? 'block' : 'none';
+            });
+
+            // Initial check for arrows
+            rightArrow.style.display = slider.scrollWidth > slider.clientWidth ? 'block' : 'none';
+        });
+    </script>
+
+
+
+    <%- include('partials/footer') %>
+        <%- include('partials/s-bottom') %>

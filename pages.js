@@ -10,6 +10,20 @@ router.get('/', async (req, res) => {
     try {
         const venues = await Venue.findAll();
         const accomodations = await Accomodation.findAll();
+
+        // Replace string features with parsed array in each accomodation
+        accomodations.forEach(acc => {
+            if (typeof acc.features === 'string') {
+            try {
+                acc.features = JSON.parse(acc.features);
+            } catch (e) {
+                acc.features = [];
+            }
+            }
+        });
+
+        
+
         const activities = await Other.findAll({ where: { type: 'activities' } });
         const nightlife = await Other.findAll({ where: { type: 'nightlife' } });
         const occasions = await Other.findAll({ where: { type: 'occasions' } });
@@ -202,7 +216,18 @@ router.get('/accommodations/:code/:roomcode', async (req, res) => {
         if (!room) {
             return res.status(404).send('Room not found');
         }
-        res.status(200).render('room', { room, code });
+        // Parse features as JSON arrays if they are strings
+        if (typeof room.features === 'string') {
+            try {
+                room.features = JSON.parse(room.features);
+            } catch (e) {
+                room.features = [];
+            }
+        }
+
+        //find map where name is equal to accomodation.name
+        const maps = await Map.findOne({ where: { name: accomodation.name }, raw: true });
+        res.status(200).render('room', { room, code, maps });
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
@@ -211,8 +236,28 @@ router.get('/accommodations/:code/:roomcode', async (req, res) => {
 
 const venues = await Venue.findAll();
 for (const venue of venues) {
+
+    // Parse features and events as JSON arrays if they are strings
+    if (typeof venue.features === 'string') {
+        try {
+            venue.features = JSON.parse(venue.features);
+        } catch (e) {
+            venue.features = [];
+        }
+    }
+    if (typeof venue.events === 'string') {
+        try {
+            venue.events = JSON.parse(venue.events);
+        } catch (e) {
+            venue.events = [];
+        }
+    }
+
+
     router.get(`/${venue.code}`, async (req, res) => {
-        res.status(200).render('venue', { venue, venues });
+        //get maps where name is equal to venue name
+        const maps = await Map.findOne({ where: { name: venue.name }, raw: true });
+        res.status(200).render('venue', { venue, venues, maps });
     });
 }
 
@@ -251,6 +296,14 @@ function getAllPaths(data) {
 
 router.get('/gallery', async (req, res) => {
     res.status(200).render('gallery', { gallery: flatGallery });
+});
+
+router.get('/activities', async (req, res) => {
+    res.status(200).render('activities');
+});
+
+router.get('/blog', async (req, res) => {
+    res.status(200).render('blog');
 });
 
 export default router;
