@@ -1,5 +1,5 @@
 import express from 'express';
-import { Accomodation, Venue, Room, Other, Map } from './models.js';
+import { Accomodation, Venue, Room, Other, Map, Page } from './models.js';
 import { buildTree } from './img.js';
 
 const router = express.Router();
@@ -14,15 +14,15 @@ router.get('/', async (req, res) => {
         // Replace string features with parsed array in each accomodation
         accomodations.forEach(acc => {
             if (typeof acc.features === 'string') {
-            try {
-                acc.features = JSON.parse(acc.features);
-            } catch (e) {
-                acc.features = [];
-            }
+                try {
+                    acc.features = JSON.parse(acc.features);
+                } catch (e) {
+                    acc.features = [];
+                }
             }
         });
 
-        
+
 
         const activities = await Other.findAll({ where: { type: 'activities' } });
         const nightlife = await Other.findAll({ where: { type: 'nightlife' } });
@@ -295,15 +295,118 @@ function getAllPaths(data) {
 //const flatGallery = getAllPaths(gallery);
 
 router.get('/gallery', async (req, res) => {
-    res.status(200).render('gallery', { gallery: flatGallery });
+    const weddings = ['Maria & Kevin Wedding', 'Chena & Dylan Wedding', 'Ange-Marie & Dory Wedding', 'Raghida & Marc Wedding', 'Ronabelle & Carlos Wedding'];
+    //res.status(200).render('gallery', { gallery: flatGallery });
+    res.status(200).render('gallery', { weddings });
+});
+
+router.get('/gallery/:name', async (req, res) => {
+    const { name } = req.params;
+    res.status(200).render('partials/gallery', { wedding: name });
 });
 
 router.get('/activities', async (req, res) => {
-    res.status(200).render('activities');
+    const arrow = `<svg style="background: #da5f65; border-radius: 50%; padding: 2px;" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" fill="#FFFFFF"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>`;
+    const touring = await Page.findAll({
+        where: { type: 'touring' },
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
+    const sport = await Page.findAll({
+        where: { type: 'sport' },
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
+    res.status(200).render('activities', { touring, sport, arrow });
 });
 
+
+
 router.get('/blog', async (req, res) => {
-    res.status(200).render('blog');
+
+    //featured are the 3 blogs of id's 3, 2 and 8
+    const featured = await Page.findAll({
+        where: { id: [3, 2, 8], type: 'blog' },
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
+
+    //latest are the latest 5 blogs
+    const latest = await Page.findAll({
+        where: { type: 'blog' },
+        order: [['createdAt', 'DESC']],
+        limit: 5,
+        raw: true,
+    });
+
+    const blogs = await Page.findAll({
+        where: { type: 'blog' },
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
+    res.status(200).render('blog', { blogs, featured, latest });
+});
+
+//single blog pages
+router.get('/blog/:slug', async (req, res) => {
+    const { slug } = req.params;
+    const blog = await Page.findOne({
+        where: { slug, type: 'blog' },
+        raw: true,
+    });
+
+    const featured = await Page.findAll({
+        where: { id: [3, 2, 8], type: 'blog' },
+        order: [['createdAt', 'DESC']],
+        raw: true,
+    });
+
+    const latest = await Page.findAll({
+        where: { type: 'blog' },
+        order: [['createdAt', 'DESC']],
+        limit: 5,
+        raw: true,
+    });
+    if (!blog) {
+        return res.status(404).send('Blog not found');
+    }
+    res.status(200).render('single-blog', { blog, featured, latest });
+});
+
+
+router.get('/story', async (req, res) => {
+    res.status(200).render('story');
+});
+
+router.get('/contact', async (req, res) => {
+    res.status(200).render('contact');
+});
+
+router.post('/contact', async (req, res) => {
+    const { name, email, message } = req.body;
+    console.log(name, email, message); 
+    
+    res.status(200).render('contact', { success: true });
+});
+
+router.get('/:page', async (req, res) => {
+    const { page } = req.params;
+
+    const dbPage = await Page.findOne({
+        where: { slug: page },
+        raw: true,
+    });
+
+    if (!dbPage) {
+        return res.redirect('/');
+    }
+
+    res.status(200).render('page', { html: dbPage });
+});
+
+//on 404 redirect to index
+router.get('*', (req, res) => {
+    res.redirect('/');
 });
 
 export default router;

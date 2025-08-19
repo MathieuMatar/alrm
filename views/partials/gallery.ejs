@@ -1,0 +1,151 @@
+<%- include('s-top') %>
+    <style>
+        .main-parent {
+            background: #25252c;
+        }
+
+
+
+        .items {
+            height: 20vh;
+            padding: 10px;
+            display: flex;
+            overflow-x: scroll;
+            gap: 10px;
+        }
+
+        .items img {
+            height: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .main-container {
+            height: 80vh;
+            width: 100%;
+            padding-top: 10px;
+            position: relative;
+        }
+
+        .main {
+            max-height: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .main-container svg {
+            width: 48px;
+            height: 70px;
+            fill: #FFFFFF;
+            background: #7c7c94;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .main-container svg:first-child {
+            position: absolute;
+            right: 10px;
+            top: 35px;
+            transform: translateY(-50%);
+            height: 48px;
+        }
+
+        .main-container svg:nth-child(2) {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .main-container svg:last-child {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .items img.active {
+            box-shadow: 0px 0px 0px 2px white;
+        }
+    </style>
+
+
+    <div class="main-parent">
+        <div class="main-container">
+
+            <svg onclick="window.location.href='/gallery/'" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path
+                    d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" />
+            </svg>
+
+            <svg onclick="move('left')" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="M560-280 360-480l200-200v400Z" />
+            </svg>
+            <img class="main" src='/img/gallery/<%= wedding %>/<%= wedding %> Alyasa Village (1).avif'
+                alt='<%= wedding %>'>
+
+            <svg onclick="move('right')" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="M400-280v-400l200 200-200 200Z" />
+            </svg>
+        </div>
+
+        <div class="items">
+            <% for (let i=1; i <=40; i++) { %>
+                <img src='/img/gallery/<%= wedding %>/<%= wedding %> Alyasa Village (<%= i %>).avif'
+                    alt='<%= wedding %>' <% if(i===1){ %> class="active"<% } %>>
+                    <% } %>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("error", function (e) {
+            if (e.target.tagName === "IMG") {
+                e.target.remove();
+            }
+        }, true);
+        document.currentScript.remove();
+    </script>
+
+    <script>
+
+
+
+        function move(direction) {
+            const items = document.querySelectorAll(".items img");
+
+            const active = document.querySelector(".items img.active");
+            let newIndex = Array.from(items).indexOf(active);
+
+            if (direction === "left") {
+                newIndex = (newIndex - 1 + items.length) % items.length;
+            } else {
+                newIndex = (newIndex + 1) % items.length;
+            }
+
+            active.classList.remove("active");
+            items[newIndex].classList.add("active");
+            document.querySelector(".main").src = items[newIndex].src;
+
+            //also scroll items by the width of .items img + 10px
+            document.querySelector(".items").scrollLeft = items[newIndex].offsetLeft - 10;
+        }
+        const items = document.querySelectorAll(".items img");
+        //set onclick for items
+        items.forEach(item => {
+            item.addEventListener("click", () => {
+                const active = document.querySelector(".items img.active");
+                if (active) active.classList.remove("active");
+                item.classList.add("active");
+                document.querySelector(".main").src = item.src;
+                document.querySelector(".items").scrollLeft = item.offsetLeft - 10;
+            });
+        });
+    </script>
+
+
+    <%- include('s-bottom') %>

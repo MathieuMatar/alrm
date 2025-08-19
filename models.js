@@ -133,6 +133,52 @@ Map.init(
   }
 )
 
+class Page extends Model {}
+
+Page.init(
+  {
+    title: {
+      type: DataTypes.STRING(150),
+      allowNull: false,
+    },
+    slug: {
+      type: DataTypes.STRING(150),
+      allowNull: false,
+      unique: true,
+    },
+    html: {
+      type: DataTypes.TEXT('long'), // for full HTML content
+      allowNull: false,
+    },
+    meta_title: {
+      type: DataTypes.STRING(150),
+      allowNull: true,
+    },
+    meta_description: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    meta_keyword: {
+      type: DataTypes.STRING(255), // optional, even though not used much by SEO anymore
+      allowNull: true,
+    },
+    thumbnail: {
+      type: DataTypes.STRING(255), 
+      allowNull: true,
+      // store the **URL or file path** instead of blob
+    },
+    type: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    }
+  },
+  {
+    sequelize,
+    modelName: 'Page',
+  }
+);
+
+
 
 // Set up associations
 Accomodation.hasMany(Room, {
@@ -143,4 +189,4 @@ Room.belongsTo(Accomodation, {
   foreignKey: { name: 'accomodationId', allowNull: false },
 });
 
-export { Accomodation, Venue, Room, Other, Map };
+export { Accomodation, Venue, Room, Other, Map, Page };

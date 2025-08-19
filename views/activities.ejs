@@ -90,6 +90,8 @@
             height: 170px;
             padding: 20px;
             transition: all 0.3s ease;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .slider {
@@ -116,23 +118,26 @@
         <div class="slider">
             <div class="section-info">
                 <span>text info</span>
-                <h2>fsjdfskdjfh</h2>
+                <h2>Sports & Recreation</h2>
                 <p>kafkdjhfkjhksjhdfkjh</p>
                 <strong>sfhskdfhksjhfkdjfh</strong>
             </div>
+
             <% const colors=[ '#ea6060' , '#fbc548' , '#54bfbe' , '#5d9cec' , '#a768d5' , '#4ec27f' , '#f2855e'
                 , '#d98cb3' , '#7e7e7e' , '#b5cc4a' ]; %>
 
-                <% for (let i=0; i < 10; i++) { %>
-                    <div class="section-item"
-                        style="background-image: url(https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70);">
+                <% for (let i=0; i < sport.length; i++) { %>
+                    <div class="section-item" style="background-image: url('/img/blog/<%= sport[i].thumbnail %>');">
                         <div style="background-color: <%= colors[i % colors.length] %>;">
-                            <h3>kdjh kjh fsdhjf</h3>
-                            kjhkjhkhkfjdhfs
+                            <h3>
+                                <%= sport[i].title %>
+                            </h3>
+                            <p>
+                                <%= sport[i].meta_description%>
+                            </p>
                         </div>
                     </div>
                     <% } %>
-
         </div>
     </div>
 
@@ -145,21 +150,27 @@
             display: flex;
             margin: 30px;
             display: flex;
+            position: relative;
         }
 
         .cards>* {
             height: 100%;
             border-radius: 30px;
+            transition: all 0.5s ease;
         }
 
         .card1 {
             background-color: #dfddd6;
             width: 35%;
+            transition: all 0.5s ease;
         }
 
         .card2 {
             width: calc(40% + 50px);
             margin-left: -50px;
+            transition: all 0.5s ease;
+            object-fit: cover;
+            object-position: center;
         }
 
         .card3 {
@@ -167,11 +178,35 @@
             width: calc(25% + 50px);
             margin-left: -50px;
             padding: 30px;
+            line-height: 1.5;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.5s ease;
+        }
+
+        .card3 p {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            position: relative;
         }
 
         .cards .section-info {
             height: 100%;
             max-width: 400px;
+        }
+
+        .card4 {
+            background-color: #dfddd6;
+            position: absolute;
+            left: 60%;
+            z-index: -1;
+            padding-left: 6%;
+            width: 40%;
+            display: none;
         }
     </style>
 
@@ -182,21 +217,95 @@
         <div class="card1">
             <div class="section-info">
                 <span>text info</span>
-                <h2>fsjdfskdjfh</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                <h2>Wellness & Relaxation</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit. </p>
                 <strong>sfhskdfhksjhfkdjfh</strong>
             </div>
 
         </div>
-        <img class="card2"
-            src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
+        <img class="card2" src="/img/blog/1267[1].jpg">
 
         <div class="card3">
-            <strong>title gfgljlkjg</strong>
+            <svg id="return-arrow" onclick="returnn()" xmlns="http://www.w3.org/2000/svg" height="40px"
+                viewBox="0 -960 960 960" fill="#da5f65" style="transform: rotate(180deg); position: absolute;
+    top: 25px; display: none;">
+                <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+            </svg>
+            <strong style="color: #da5f65;">Our Offerings</strong>
+            <br>
+            <p onclick="show('massage', '/img/blog/istockphoto-1460715503-612x612.jpg')">Massage <%- arrow %></p>
+            <p onclick="show('sauna' , '/img/blog/istockphoto-827324092-612x612.jpg')">Sauna / Steam Room <%- arrow %>
+            </p>
+            <p onclick="show('jacuzzi' , '/img/blog/istockphoto-1265622456-612x612.jpg')">Jacuzzi <%- arrow %></p>
 
+
+
+        </div>
+        <div class="card4" id="massage">
+            <span>text info</span>
+            <h2>Massage</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit. </p>
+            <strong>sfhskdfhksjhfkdjfh</strong>
+
+        </div>
+        <div class="card4" id="sauna">
+            <span>text info</span>
+            <h2>Sauna / Steam Room</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit. </p>
+            <strong>sfhskdfhksjhfkdjfh</strong>
+        </div>
+        <div class="card4" id="jacuzzi">
+            <span>text info</span>
+            <h2>Jacuzzi</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit. </p>
+            <strong>sfhskdfhksjhfkdjfh</strong>
         </div>
 
     </div>
+
+    <script>
+        const card4 = document.querySelector('.card4');
+        const card3 = document.querySelector('.card3');
+        const card2 = document.querySelector('.card2');
+        const card1 = document.querySelector('.card1');
+        const returnArrow = document.getElementById('return-arrow');
+        //add margin-left: -75%;
+        function show(id, imgSrc) {
+            const activeCard = document.getElementById(id);
+            activeCard.style.display = 'block';
+            card1.style.width = '25%';
+            card3.style.marginLeft = '-65%';
+            card3.style.width = 'calc(20% + 50px)';
+            setTimeout(() => {
+                card2.src = imgSrc;
+            }, 200);
+
+            returnArrow.style.display = 'block';
+
+        }
+
+        function returnn() {
+            //remove inline styling on cart 1
+            card1.style.width = '';
+            card3.style.marginLeft = '';
+            card3.style.width = '';
+            setTimeout(() => {
+                card2.src = '/img/blog/1267[1].jpg';
+            }, 200);
+
+            //find .card4 with display block and make it none
+            const activeCard = document.querySelector('.card4[style*="display: block"]');
+            if (activeCard) {
+                activeCard.style.display = 'none';
+            }
+
+            returnArrow.style.display = 'none';
+        }
+    </script>
 
 
 
@@ -207,21 +316,23 @@
 
     <div class="section-info" style="margin: 0 auto; text-align: center; display: flex; align-items: center;">
         <span>text info</span>
-        <h2>fsjdfskdjfh</h2>
+        <h2>Touring and Hiking</h2>
         <p>kafkdjhfkjhksjhdfkjh</p>
     </div>
     <div class="slider-container">
 
         <div class="slider">
-            <% for (let i=0; i < 15; i++) { %>
+            <% touring.forEach(item=> { %>
                 <div class="section-item"
-                    style="background-image: url(https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70); width: 360px;">
+                    style="background-image: url('/img/blog/<%= item.thumbnail %>'); width: 360px;">
                     <div
                         style="background-color: white; height: 90px; display: flex; align-items: center; justify-content: center;">
-                        <strong>kdjh kjh fsdhjf</strong>
+                        <strong>
+                            <%= item.title %>
+                        </strong>
                     </div>
                 </div>
-                <% } %>
+                <% }) %>
         </div>
     </div>
 
@@ -248,7 +359,7 @@
         <div class="slider">
             <div class="section-info">
                 <span>text info</span>
-                <h2>fsjdfskdjfh</h2>
+                <h2>Nightlife</h2>
                 <p>kafkdjhfkjhksjhdfkjh</p>
                 <strong>sfhskdfhksjhfkdjfh</strong>
             </div>
@@ -298,7 +409,7 @@
         <div class="slider">
             <div class="section-info">
                 <span>text info</span>
-                <h2>fsjdfskdjfh</h2>
+                <h2>Events</h2>
                 <p>kafkdjhfkjhksjhdfkjh</p>
                 <strong>sfhskdfhksjhfkdjfh</strong>
             </div>

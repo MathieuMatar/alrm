@@ -43,7 +43,6 @@
         }
 
         .single {
-            background-image: url(https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70);
             padding: 20px;
             border-radius: 20px;
             max-width: 300px;
@@ -75,6 +74,11 @@
             display: flex;
             gap: 15px;
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .aside-single:hover {
+            transform: translateY(-5px);
         }
 
         .aside-single img {
@@ -92,6 +96,35 @@
         .aside-single p {
             font-weight: bold;
         }
+
+        .newsletter {
+            background-color: #e3e2e2;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid gray;
+        }
+
+        .newsletter button {
+            background-color: #1a1d1c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .newsletter>* {
+            display: block;
+            margin-bottom: 10px;
+
+        }
     </style>
 
 
@@ -102,45 +135,73 @@
             </div>
 
             <div class="content">
-                <% for (let i=0; i < 15; i++) { %>
-                    <div class="single">
-                        <span>Blog type</span>
-                        <h4>Blog Post Title</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                    <% } %>
+                <% blogs.forEach(blog=> { %>
+                    <a href="/blog/<%= blog.slug %>" class="single"
+                        style="background-image: url('/img/blog/<%= blog.thumbnail %>');">
+                        <span>
+                            <%= blog.createdAt.getDate().toString().padStart(2, '0' ) %>/<%=
+                                    (blog.createdAt.getMonth()+1).toString().padStart(2, '0' ) %>/<%=
+                                        blog.createdAt.getFullYear() %>
+                        </span>
+                        <h4>
+                            <%= blog.title %>
+                        </h4>
+                        <p>
+                            <%= blog.meta_description %>...
+                        </p>
+                    </a>
+                    <% }) %>
+
             </div>
         </main>
         <aside>
             <div class="title">
                 <h3>Featured</h3>
             </div>
-            <% for (let i=0; i < 3; i++) { %>
-            <div class="aside-single">
-                <img
-                    src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
-                <div>
-                    <span>00/00/00</span>
-                    <p>Blog Post Title Blog Post Title Blog Post Title Blog Post Title</p>
-                </div>
-            </div>
-            <% } %>
+            <% for (let f of featured) { %>
+                <a href="/blog/<%= f.slug %>" class="aside-single">
+                    <img src="/img/blog/<%= f.thumbnail %>">
+                    <div>
+                        <span>
+                            <%= f.createdAt.getDate().toString().padStart(2, '0' ) %>/<%=
+                                    (f.createdAt.getMonth()+1).toString().padStart(2, '0' ) %>/<%=
+                                        f.createdAt.getFullYear() %>
+                        </span>
+                        <p>
+                            <%= f.title %>
+                        </p>
+                    </div>
+                </a>
+                <% } %>
 
-            <div class="title">
-                <h3>Latest</h3>
-            </div>
-            <% for (let i=0; i < 5; i++) { %>
-            <div class="aside-single">
-                <img
-                    src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=2210&quality=70">
-                <div>
-                    <span>00/00/00</span>
-                    <p>Blog Post Title Blog Post Title Blog Post Title Blog Post Title</p>
-                </div>
-            </div>
-            <% } %>
+                    <div class="title">
+                        <h3>Latest</h3>
+                    </div>
+                    <% for (let l of latest) { %>
+                        <a class="aside-single">
+                            <img src="/img/blog/<%= l.thumbnail %>">
+                            <div>
+                                <span>
+                                    <%= l.createdAt.getDate().toString().padStart(2, '0' ) %>/<%=
+                                            (l.createdAt.getMonth()+1).toString().padStart(2, '0' ) %>/<%=
+                                                l.createdAt.getFullYear() %>
+                                </span>
+                                <p>
+                                    <%= l.title %>
+                                </p>
+                            </div>
+                        </a>
+                        <% } %>
+
+                            <div class="title">
+                                <h3>Newsletter</h3>
+                            </div>
+                            <form class="newsletter" action="/subscribe" method="POST">
+                                <label>Subscribe to our newsletter for the latest updates</label>
+                                <input type="email" name="email" placeholder="Your email" required>
+                                <button type="submit">Subscribe</button>
+                            </form>
+
 
         </aside>
     </section>
