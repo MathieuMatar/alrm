@@ -1,5 +1,4 @@
 <%- include('partials/s-top') %>
-    <link rel="stylesheet" href="/css/accomodations.css">
     <div
         style="background-image: url(/img/banners/accommodation.jpg); min-height: 45vh; background-size: cover; background-position: center;">
         <%- include('partials/header') %>
@@ -22,7 +21,7 @@
     <a title="<%= intro.name %>" description="<%= intro.description %>" href="/accommodations" id="show-all">ALL</a>
     <div class="rooms">
         <%for (let room of rooms) { %>
-            <a acc="r<%= room.accomodationId %>" href="/accommodations/<%= room.accomodationCode %>/<%= room.code %>">
+            <a acc="r<%= room.accomodationId %>" href="/accommodations/<%= room.Accomodation.code %>/<%= room.code %>">
                 <div class="room-img" style="background-image: url('/img/rooms/<%= room.code %>/1.jpg');">
                     <span>info info</span>
                     View Details
@@ -39,4 +38,4 @@
 
 
     <%- include('partials/footer') %>
-    <%- include('partials/s-bottom') %>
+        <%- include('partials/s-bottom') %>

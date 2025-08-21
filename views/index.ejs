@@ -112,8 +112,8 @@
             </div>
 
             <div class="acc-buttons">
-                <button class="acc-book">Book Now</button>
-                <button class="acc-more">More Info</button>
+                <button onclick="window.open('https://alyasavillage.bookingmystay.com/', '_blank')" class="acc-book">Book Now</button>
+                <button onclick="window.location.href='/accommodations/'" class="acc-more">More Info</button>
                 <svg onclick="moveGallery('slider', -1)" viewBox="0 0 100 60">
                     <path d="M25 30 L70 30 M70 30 L55 15 M70 30 L55 45" />
                 </svg>
@@ -156,52 +156,18 @@
         <div style="background-image: url('img/activities/<%= activities[0].code %>.png');"></div>
     </div>
 
-
-    <style>
-        .map {
-            background-image: url(/img/map.png);
-            aspect-ratio: 7 / 5;
-            background-size: contain;
-            background-position: center;
-            position: relative;
-            margin: 25px 10%;
-        }
-
-        .map div {
-            width: 20px;
-            height: 20px;
-            background-color: royalblue;
-            border: 2px solid #ffedb1;
-            border-radius: 50px;
-            position: absolute;
-            cursor: pointer;
-        }
-
-        .map div a {
-            position: absolute;
-            display: none;
-            background-color: antiquewhite;
-            margin-left: 20px;
-            padding: 5px 10px;
-            border-radius: 5px;
-
-        }
-
-        .map div:hover a {
-            display: block;
-        }
-    </style>
-
-    <div class="map">
-        <% for(let m of mapData) { %>
-            <div style="left:<%= m.left %>%; top: <%= m.top %>%">
-                <a target="_blank" href="<%= m.url %>">
-                    <%= m.name %>
-                </a>
+    <div class="nightlife">
+        <% for (let nl of nightlife) { %>
+            <div style="background-image: url('img/nightlife/<%= nl.code %>.avif');">
+                <h2>
+                    <%= nl.name %>
+                </h2>
+                <p>
+                    <%= nl.description %>
+                </p>
             </div>
             <% } %>
     </div>
-
 
     <link rel="stylesheet"
         href="https://www.alyasavillage.com/wp-content/uploads/trustindex-google-widget.css?1755074355">
@@ -228,18 +194,56 @@
         <script src="https://cdn.trustindex.io/loader.js"></script>
 
 
-        <div class="nightlife">
-            <% for (let nl of nightlife) { %>
-                <div style="background-image: url('img/nightlife/<%= nl.code %>.avif');">
-                    <h2>
-                        <%= nl.name %>
-                    </h2>
-                    <p>
-                        <%= nl.description %>
-                    </p>
+        <style>
+            .map {
+                background-image: url(/img/map.png);
+                aspect-ratio: 7 / 5;
+                background-size: contain;
+                background-position: center;
+                position: relative;
+                margin: 25px 10%;
+            }
+
+            .map div {
+                width: 20px;
+                height: 20px;
+                background-color: royalblue;
+                border: 2px solid #ffedb1;
+                border-radius: 50px;
+                position: absolute;
+                cursor: pointer;
+            }
+
+            .map div a {
+                position: absolute;
+                display: none;
+                background-color: antiquewhite;
+                margin-left: 20px;
+                padding: 5px 10px;
+                border-radius: 5px;
+
+            }
+
+            .map div:hover a {
+                display: block;
+            }
+        </style>
+
+        <div class="map">
+            <% for(let m of mapData) { %>
+                <div style="left:<%= m.left %>%; top: <%= m.top %>%">
+                    <a target="_blank" href="<%= m.url %>">
+                        <%= m.name %>
+                    </a>
                 </div>
                 <% } %>
         </div>
+
+
+
+
+
+
 
         <script src="/script/home.js"></script>
 

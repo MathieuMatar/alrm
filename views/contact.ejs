@@ -166,46 +166,38 @@
 
         .sucess {
             background-color: #1a1d1c;
-    border: 1px solid #dcdcdc;
-    border-radius: 15px;
-    padding: 15px 30px;
-    width: fit-content;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 25px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #28a745;
-    transition: all 0.3s ease;
+            border: 1px solid #dcdcdc;
+            border-radius: 15px;
+            padding: 15px 30px;
+            width: fit-content;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
     </style>
 
 
     <% if (typeof success !=='undefined' && success) { %>
-        <p class="sucess">Message sent successfully!</p>
+        <p class="sucess" style="color: #28a745;">Message sent successfully!</p>
         <% } else if (typeof success !=='undefined' && !success) { %>
-            <p class="sucess">Failed to send message. Please try again.</p>
+            <p class="sucess" style="color: #dc3545;">Failed to send message. Please try again.</p>
             <% } %>
 
-            <script>
-                setTimeout(function() {
-                    const success = document.querySelector('.sucess');
-                    success.style.padding = 0;
-                    success.style.marginTop = 0;
-                    success.style.fontSize = '0';
-                    //sleep for a second
-                    setTimeout(function() {
-                        success.style.display = 'none';
-                    }, 300);
-                }, 3000);
-            </script>
-
-
-
-
-
-
-
+                <script>
+                    setTimeout(function () {
+                        const success = document.querySelector('.sucess');
+                        success.style.padding = 0;
+                        success.style.marginTop = 0;
+                        success.style.fontSize = '0';
+                        //sleep for a second
+                        setTimeout(function () {
+                            success.style.display = 'none';
+                        }, 300);
+                    }, 3000);
+                </script>
 
                 <div class="contact-page">
                     <div class="contact-text">

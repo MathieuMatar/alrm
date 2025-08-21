@@ -1,169 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<% var seo = typeof seo !== 'undefined' ? seo : {}; %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Alyasa Village">
+  <meta name="theme-color" content="#b48f5c">
+  <meta name="color-scheme" content="light">
 
-<% if (seo.meta && seo.meta.charset) { %>
-  <meta charset="<%= seo.meta.charset %>">
-<% } %>
-<% if (seo.meta && seo.meta.viewport) { %>
-  <meta name="viewport" content="<%= seo.meta.viewport %>">
-<% } %>
-<% if (seo.meta && seo.meta.viewTransition) { %>
-  <meta name="view-transition" content="<%= seo.meta.viewTransition %>">
-<% } %>
-<% if (seo.meta && seo.meta.description) { %>
-  <meta name="description" content="<%= seo.meta.description %>">
-<% } %>
-<% if (seo.meta && seo.meta.keywords) { %>
-  <meta name="keywords" content="<%= seo.meta.keywords %>">
-<% } %>
-<% if (seo.meta && seo.meta.author) { %>
-  <meta name="author" content="<%= seo.meta.author %>">
-<% } %>
-<% if (seo.meta && seo.meta.robots) { %>
-  <meta name="robots" content="<%= seo.meta.robots %>">
-<% } %>
+  <% var seo = typeof seo !== 'undefined' ? seo : {}; %>
 
-<% if (seo.title) { %>
-  <title><%= seo.title %></title>
-<% } %>
-<% if (seo.canonical) { %>
-  <link rel="canonical" href="<%= seo.canonical %>">
-<% } %>
+  <title><%= seo.title || 'Alyasa Village – Luxury Retreat in Lebanon' %></title>
+  <meta name="description" content="<%= seo.description || 'Luxury Lebanese retreat offering authentic cultural experiences, premium accommodations, event venues, and wellness facilities in the stunning landscapes of Lebanon.' %>">
+  <meta name="keywords" content="<%= seo.keywords || 'luxury retreat, Lebanon, spa, resort, event venue' %>">
+  <% if (seo.url) { %><link rel="canonical" href="<%= seo.url %>"><% } %>
 
-<!-- Open Graph -->
-<% if (seo.openGraph && seo.openGraph.title) { %>
-  <meta property="og:title" content="<%= seo.openGraph.title %>">
-<% } %>
-<% if (seo.openGraph && seo.openGraph.description) { %>
-  <meta property="og:description" content="<%= seo.openGraph.description %>">
-<% } %>
-<% if (seo.openGraph && seo.openGraph.image) { %>
-  <meta property="og:image" content="<%= seo.openGraph.image %>">
-<% } %>
-<% if (seo.openGraph && seo.openGraph.url) { %>
-  <meta property="og:url" content="<%= seo.openGraph.url %>">
-<% } %>
-<% if (seo.openGraph && seo.openGraph.type) { %>
-  <meta property="og:type" content="<%= seo.openGraph.type %>">
-<% } %>
+  <!-- Open Graph -->
+  <meta property="og:type" content="<%= (seo.openGraph && seo.openGraph.type) || 'website' %>">
+  <meta property="og:title" content="<%= seo.meta_title || seo.title || 'Alyasa Village' %>">
+  <meta property="og:description" content="<%= seo.description %>">
+  <% if (seo.image) { %><meta property="og:image" content="<%= seo.image %>"><% } %>
+  <% if (seo.url) { %><meta property="og:url" content="<%= seo.url %>"><% } %>
 
-<!-- Twitter -->
-<% if (seo.twitter && seo.twitter.card) { %>
-  <meta name="twitter:card" content="<%= seo.twitter.card %>">
-<% } %>
-<% if (seo.twitter && seo.twitter.title) { %>
-  <meta name="twitter:title" content="<%= seo.twitter.title %>">
-<% } %>
-<% if (seo.twitter && seo.twitter.description) { %>
-  <meta name="twitter:description" content="<%= seo.twitter.description %>">
-<% } %>
-<% if (seo.twitter && seo.twitter.image) { %>
-  <meta name="twitter:image" content="<%= seo.twitter.image %>">
-<% } %>
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= seo.meta_title || seo.title %>">
+  <meta name="twitter:description" content="<%= seo.description %>">
+  <% if (seo.image) { %><meta name="twitter:image" content="<%= seo.image %>"><% } %>
+  <meta name="twitter:site" content="@alyasavillage">
 
-<% if (seo.favicon) { %>
-  <link rel="icon" href="<%= seo.favicon %>" type="image/x-icon">
-<% } %>
+  <!-- Favicon -->
+  <link rel="icon" href="/img/icon.png" type="image/x-icon">
 
-<% if (seo.fonts && seo.fonts[0]) { %>
-  <link rel="preconnect" href="<%= seo.fonts[0] %>">
-<% } %>
-<% if (seo.fonts && seo.fonts[1]) { %>
-  <link rel="preconnect" href="<%= seo.fonts[1] %>" crossorigin>
-<% } %>
-<% if (seo.googleFontLink) { %>
-  <link href="<%= seo.googleFontLink %>" rel="stylesheet">
-<% } %>
-<% if (seo.stylesheet) { %>
-  <link rel="stylesheet" href="<%= seo.stylesheet %>">
-<% } %>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  <% if (seo.stylesheet) { %><link rel="stylesheet" href="<%= seo.stylesheet %>"><% } %>
 
-<% if (seo.structuredData) { %>
+  <!-- JSON-LD -->
   <script type="application/ld+json">
-    <%= JSON.stringify(seo.structuredData) %>
+    {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "<%= seo.title || 'Alyasa Village' %>",
+        "url": "<%= seo.url || 'https://www.alyasavillage.com/' %>",
+        "description": "<%= seo.description || 'Luxury Lebanese retreat offering authentic cultural experiences, premium accommodations, event venues, and wellness facilities in the stunning landscapes of Lebanon.' %>",
+        "image": <%- JSON.stringify(seo.images || [
+        "https://www.alyasavillage.com/img/home-banners/1.jpg",
+        "https://www.alyasavillage.com/img/home-banners/2.jpg",
+        "https://www.alyasavillage.com/img/home-banners/3.jpg",
+        "https://www.alyasavillage.com/img/home-banners/4.jpg"
+        ]) %>,
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Saqi Rechmaiya",
+            "addressLocality": "Jbeil",
+            "addressCountry": "Lebanon"
+        },
+        "telephone": "+961 71 71 58 71",
+        "email": "hello@alyasavillage.com",
+        "priceRange": "$$$$",
+        "review": [
+        {
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "Layla Mansour"
+            },
+            "datePublished": "2025-03-15",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5"
+            },
+            "reviewBody": "Staying at The Villa was an unforgettable experience. The spacious master suite and private gym made our stay truly special. The garden and waterfall created a peaceful atmosphere that we loved. Highly recommended for anyone seeking luxury and tranquility."
+        },
+        {
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "Omar Khalil"
+            },
+            "datePublished": "2025-04-10",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "4"
+            },
+            "reviewBody": "The Villa offers a perfect blend of comfort and elegance. The fully furnished living spaces and mountain views were breathtaking. The sauna was a great bonus after a long day exploring the area."
+        }
+        ],
+        "amenityFeature": [
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Swimming Pool"
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Gym",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Sauna",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Steam Room",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Spa Services",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Event Venues",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Restaurant",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Bar",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Garden with Terrace and Pergola",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Mountain Views",
+                "value": true
+            }
+        ],
+        "sameAs": [
+            "https://www.facebook.com/alyasavillage",
+            "https://www.instagram.com/alyasavillage",
+            "https://www.youtube.com/channel/UC95fmJSUmd5U6zX8uf72QBg",
+            "https://www.linkedin.com/company/alyasavillage/"
+        ],
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "34.1208",
+            "longitude": "35.6482"
+        },
+        "hasMap": "https://maps.app.goo.gl/3CZ36SiP7vrUv8Mm6"
+    }
   </script>
-<% } %>
-
-
-
 </head>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
-    document.startViewTransition(() => {
-        // Update DOM here
-        document.body.classList.toggle('dark');
-    });
+  document.startViewTransition(() => {
+    // Update DOM here
+    document.body.classList.toggle('dark');
+  });
 
 </script>
 
 <style>
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
-        animation-duration: 1.5s;
-        animation-timing-function: ease;
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+  }
+
+  ::view-transition-old(root) {
+    animation-name: fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: fade-in;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
     }
 
-    ::view-transition-old(root) {
-        animation-name: fade-out;
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
     }
 
-    ::view-transition-new(root) {
-        animation-name: fade-in;
+    to {
+      opacity: 0;
     }
-
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes fade-out {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 0;
-        }
-    }
+  }
 </style>
 
 <body>
