@@ -1,7 +1,7 @@
 <%- include('partials/s-top') %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div class="hidden-header"
-        style="background-image: url(/img/banners/gallery.jpg); min-height: 25vh; background-size: cover; background-position: center; transition: all 0.8s ease;">
+        style="background-image: url(/img/banners/gallery.avif); min-height: 25vh; background-size: cover; background-position: center; transition: all 0.8s ease;">
         <%- include('partials/header') %>
     </div>
 
@@ -144,10 +144,23 @@
 
 
 
-        .scroll div:hover~.scroll div {
+        .scroll:hover div {
             animation-play-state: paused;
         }
+
+
+        .h3 {
+            font-family: "Bacalisties", sans-serif;
+            color: var(--gold);
+            text-align: center;
+            margin-top: 20px;
+            transition: all 3s ease;
+            opacity: 0;
+        }
     </style>
+    <h3 class="h3">
+        Explore some of the beautiful weddings that have been celebrated at Alyasa Village.
+    </h3>
 
     <div class="scroll animating" style="--time:50s">
         <div>
@@ -191,6 +204,7 @@
                 scroll.style.position = "relative";
                 document.querySelector(".hidden-header").classList.remove("hidden-header");
                 document.querySelector("footer").classList.add("show");
+                document.querySelector(".h3").style.opacity = 1;
                 //document.querySelector(".animating").classList.remove("animating");
             }, 2000);
         };
@@ -201,7 +215,7 @@
         function openGallery(text) {
             const link = `/gallery/${text}`;
             //open link
-            window.open(link, "_blank");
+            window.location.href = link;
         }
 
 

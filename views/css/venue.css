@@ -62,7 +62,7 @@ body {
 }
 
 .map > div {
-    background-image: url(/img/map.png);
+    background-image: url(/img/map.avif);
     background-size: 1000px;
     height: -webkit-fill-available;
     border-radius: 12px;

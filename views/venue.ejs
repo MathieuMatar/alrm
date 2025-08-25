@@ -1,7 +1,7 @@
 <%- include('partials/s-top') %>
   <link rel="stylesheet" href="/css/venue.css">
   <nav>
-    <a href="/"><img src="/img/s-logo.png" class="logo"></a>
+    <a href="/"><img src="/img/s-logo.avif" class="logo"></a>
     <% for (let v of venues) { %>
       <a href="/<%= v.code %>" class="<%= venue.code === v.code ? 'active' : '' %>">
         <%= v.name %>
@@ -17,15 +17,15 @@
         </select>
   </nav>
   <div class="venue">
-    <div class="gallery" style="background-image: url('/img/<%= venue.code %>/G1.jpg');">
+    <div class="gallery" style="background-image: url('/img/<%= venue.code %>/G1.avif');">
       <div class="controller">
         <div class="slider">
           <% for (let i=1; i <=3; i++) { %>
-            <img src="/img/<%= venue.code %>/G<%= i %>.jpg">
+            <img src="/img/<%= venue.code %>/G<%= i %>.avif">
             <% } %>
               <div class="plus-img">+7
                 <% for (let i=4; i <=10; i++) { %>
-                  <img src="/img/<%= venue.code %>/G<%= i %>.jpg">
+                  <img src="/img/<%= venue.code %>/G<%= i %>.avif">
                   <% } %>
               </div>
         </div>

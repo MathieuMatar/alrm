@@ -1,6 +1,6 @@
 <%- include('partials/s-top') %>
     <div
-        style="background-image: url(/img/banners/accommodation.jpg); min-height: 45vh; background-size: cover; background-position: center;">
+        style="background-image: url(/img/banners/accommodation.avif); min-height: 45vh; background-size: cover; background-position: center;">
         <%- include('partials/header') %>
     </div>
     <h1 id="title">
@@ -13,7 +13,7 @@
         <% for (let accomodation of accomodations) { %>
             <a href="/accommodations/<%= accomodation.code %>" title="<%= accomodation.name %>"
                 description="<%= accomodation.description %>"
-                style="background-image: url('/img/<%= accomodation.code %>/1.jpg');" id="r<%= accomodation.id %>">
+                style="background-image: url('/img/<%= accomodation.code %>/1.avif');" id="r<%= accomodation.id %>">
                 <%= accomodation.name %>
             </a>
             <% } %>
@@ -22,7 +22,7 @@
     <div class="rooms">
         <%for (let room of rooms) { %>
             <a acc="r<%= room.accomodationId %>" href="/accommodations/<%= room.Accomodation.code %>/<%= room.code %>">
-                <div class="room-img" style="background-image: url('/img/rooms/<%= room.code %>/1.jpg');">
+                <div class="room-img" style="background-image: url('/img/rooms/<%= room.code %>/<%= room.code %> room Alyasa Village (1).avif');">
                     <span>info info</span>
                     View Details
                 </div>

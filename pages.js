@@ -72,10 +72,10 @@ router.get('/accommodations/:code/:roomcode', async (req, res) => {
     room.features = JSON.parse(room.features);
 
     meta.title = room.name;
-    meta.thumbnail = `/img/rooms/${room.code}/1.jpg`;
+    meta.thumbnail = `/img/rooms/${room.code}/1.avif`;
     meta.html = '[';
     for (let i = 1; i <= 5; i++) {
-        meta.html += `"/img/rooms/${room.code}/${i}.jpg"`;
+        meta.html += `"/img/rooms/${room.code}/${i}.avif"`;
         if (i < 5) meta.html += ',';
     }
     meta.html += ']';
@@ -104,11 +104,11 @@ for (const venue of venues) {
         const meta = await Page.findOne({ where: { type: 'seo', slug: venue.code } });
         meta.html = '[';
         for (let i = 1; i <= 5; i++) {
-            meta.html += `"/img/${venue.code}/G${i}.jpg"`;
+            meta.html += `"/img/${venue.code}/G${i}.avif"`;
             if (i < 5) meta.html += ',';
         }
         meta.html += ']';
-        meta.thumbnail = `/img/${venue.code}/1.jpg`;
+        meta.thumbnail = `/img/${venue.code}/1.avif`;
 
         const seo = getSeo(meta, req, `/css/venue.css`);
 
@@ -118,7 +118,6 @@ for (const venue of venues) {
 
 router.get('/gallery', async (req, res) => {
     const meta = await Page.findOne({ where: { type: 'seo', slug: 'gallery' }, raw: true });
-    console.log(meta.html);
     const weddings = JSON.parse((meta.html || '[]').replace(/'/g, '"'));
     meta.html = '[';
     for (let i = 0; i < weddings.length; i++) {
@@ -136,10 +135,9 @@ router.get('/gallery/:name', async (req, res) => {
     const { name } = req.params;
 
     const meta = await Page.findOne({ where: { type: 'seo', slug: 'gallery' }, raw: true });
-    console.log(meta.html);
     meta.html = '[';
     for (let i = 0; i < 5; i++) {
-        meta.html += `"/img/gallery/${weddings}/${weddings} Alyasa Village (${i + 1}).avif"`;
+        meta.html += `"/img/gallery/${name}/${name} Alyasa Village (${i + 1}).avif"`;
         if (i < 5 - 1) meta.html += ',';
     }
     meta.html += ']';

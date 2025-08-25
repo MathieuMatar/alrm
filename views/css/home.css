@@ -192,7 +192,7 @@
 
 
 .accommodations {
-    height: 100vh;
+    height: 87vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -328,7 +328,7 @@
 
 .acc-info {
     width: 100%;
-    height: calc(100% - 30vw - 60px);
+    height: calc(100% - 20vw - 60px);
 }
 
 .acc-buttons {

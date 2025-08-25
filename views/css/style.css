@@ -4,6 +4,7 @@
     --gray: #626161;
     --dark-gray: #4d4d4d;
     --light-gray: #c7c6c6;
+    --text-grey: #3a3029;
     --white: #ffffff;
     --light-white: #ffffff55;
     --btn-height: 36px;
@@ -21,11 +22,12 @@
 
 @font-face {
     font-family: "Bacalisties";
-    src: url("http://localhost:3005/fonts/Bacalisties.ttf") format("truetype");
+    src: url("/fonts/Bacalisties.ttf") format("truetype");
 }
 
 html {
     scroll-behavior: smooth;
+    color: var(--text-grey)
 }
 
 body {
