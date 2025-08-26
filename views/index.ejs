@@ -27,8 +27,9 @@
                 <img src="img/home-gallery/<%= i %>.avif">
                 <% } %>
         </div>
+        <a class="goldbtn" href="/story">Read our story</a>
     </div>
-    <br><br>
+    <br><br><br><br><br><br>
     <div class="venues" id="venues">
         <h1>Our Venues</h1>
         <a href="/<%= venues[0].code %>" class="venues-image"
@@ -53,10 +54,12 @@
                         </span>
                         <% }); %>
                             <% } %>
+                            <a href="/<%= venue.code %>" class="goldbtn">Discover More</a>
 
             </div>
             <% }); %>
     </div>
+    <br><br><br><br>
     <h1>Our Accommodations</h1>
     <div class=" accommodations">
 
@@ -139,7 +142,8 @@
             </div>
             <% } %>
     </div>
-
+    <a href="/contact" class="goldbtn">Book your private event now</a>
+    <br><br>
     <div class="activities">
         <div>
             <% for (let i=0; i < activities.length; i++) { %>
@@ -207,8 +211,8 @@
             .map div {
                 width: 20px;
                 height: 20px;
-                background-color: royalblue;
-                border: 2px solid #ffedb1;
+                background-color: var(--gold);
+                border: 2px solid var(--gray);
                 border-radius: 50px;
                 position: absolute;
                 cursor: pointer;

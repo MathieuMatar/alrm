@@ -17,3 +17,17 @@
         </div>
     </nav>
 </header>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const navLinks = document.querySelectorAll("nav a");
+    navLinks.forEach(link => {
+        if (
+            link.getAttribute("href") !== "/" &&
+            (link.href === window.location.href ||
+            window.location.pathname.startsWith(link.getAttribute("href")))
+        ) {
+            link.classList.add("current");
+        }
+    });
+});
+</script>

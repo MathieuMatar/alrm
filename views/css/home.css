@@ -305,6 +305,8 @@
     border: 1px solid gray;
     border-radius: 30px;
     cursor: pointer;
+    z-index: 6;
+    background-color: white;
 }
 
 .slider {
@@ -343,6 +345,7 @@
     .accommodations {
         display: block;
         padding: 20px;
+        height: auto;
     }
 
     .accomodations-img {
@@ -350,13 +353,37 @@
     }
 
     .accommodations>div {
+        height: auto;
+    }
 
-        height: 50%;
+    .accomodations-img {
+        height: 80vw !important;
     }
 
     .accommodations>div:nth-of-type(2) {
         gap: 10px;
     }
+
+    .accomodations-img h2 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .acc-buttons {
+        position: relative;
+    }
+
+    .single-acc-ing span {
+        padding: 3px 8px;
+        font-size: 12px;
+        margin: 3px;
+    }
+
+    .acc-info {
+        min-height: calc(520px - 40vw);
+    }
+
 }
 
 
@@ -454,6 +481,7 @@
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 20px;
     grid-row-gap: 20px;
+    padding-bottom: 0px;
 }
 
 .occasions>h3 {

@@ -76,3 +76,20 @@ h4 {
     background-color: var(--white);
     color: var(--black);
 }
+
+.goldbtn {
+    color: var(--gold);
+    padding: var(--btn-padding);
+    border-radius: var(--btn-radius);
+    border: var(--btn-border);
+    border-color: var(--gold);
+    margin: 30px auto 0 auto;
+    display: block;
+    width: fit-content;
+    transition: 0.3s;
+}
+
+.goldbtn:hover {
+    background-color: var(--gold);
+    color: var(--white);
+}

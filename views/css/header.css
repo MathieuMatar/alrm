@@ -37,6 +37,16 @@ header nav>div:nth-child(2) a {
     margin: 5px;
 }
 
+header nav>div:nth-child(2) a.current {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+header nav>div:first-child a.current {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
 header nav>div:nth-child(2) a:hover {
     background-color: var(--white);
     color: var(--black);

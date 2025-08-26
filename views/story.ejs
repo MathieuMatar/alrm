@@ -9,6 +9,7 @@
             margin: 0 auto;
             max-width: 800px;
             text-align: center;
+            text-shadow: 0 0 9px var(--black);
         }
 
         section {
@@ -32,12 +33,15 @@
             cursor: pointer;
             transition: background 0.3s;
             font-weight: bold;
+            border-radius: 30px;
+            text-shadow: 0 0 9px var(--black);
         }
 
         .tab {
-            background-color: white;
             padding: 30px;
-            border-radius: 3px;
+            border-radius: 20px;
+            background-color: #ffffff7a;
+            backdrop-filter: blur(2px);
         }
 
         .tab img {
@@ -50,12 +54,13 @@
         .active {
             background-color: white !important;
             color: black !important;
+            text-shadow: none !important;
         }
     </style>
 
 
     <div
-        style="background-image: url(https://www.alyasavillage.com/wp-content/uploads/2023/12/0Q2A9402-2-2.jpeg); min-height: 100vh; background-size: cover; background-position: center;">
+        style="background-image: url('/img/story/background.avif'); min-height: 100vh; background-size: cover; background-position: center;">
         <%- include('partials/header') %>
 
             <h1>Our Story</h1>
@@ -66,8 +71,8 @@
 
             <section>
                 <div class="tabs">
-                    <button class="active">ABOUT THE PROPHET ALISHAA</button>
-                    <button>ABOUT ALYASA VILLAGE VENUE</button>
+                    <button class="active">About the Prophet Alishaa</button>
+                    <button>About Alyasa Village</button>
                 </div>
                 <div class="tab">
                     <p>
@@ -84,7 +89,7 @@
                         generations. Beyond restoration, El Khazen family fosters a vibrant sense of community, hosting
                         annual events that unite believers in faith & fellowship.</p>
                     <img
-                        src="https://www.alyasavillage.com/wp-content/uploads/2023/11/0Q2A9410-1-scaled-e1702036151224.avif">
+                        src="/img/story/church.avif">
                 </div>
 
                 <div class="tab" style="display: none;">
@@ -93,7 +98,7 @@
                         amenities including lodging spaces, a gym, sports arenas, and a pool, providing guests with a
                         luxurious yet authentic Lebanese experience.</p>
                     <p>
-                        The vision behind Alyasa Village was to build upon the rich history of joyful events centered
+                        Alyasa Village was to build upon the rich history of joyful events centered
                         around the church while elevating the experience with modern amenities and a focus on hygiene
                         standards. Whether guests seek relaxation in the steam room or a refreshing dip in the nested
                         pool, Alyasa Village ensures a high standard of comfort and luxury.</p>
@@ -102,7 +107,7 @@
                         including the historic cedar forest reserve in the town of JAJ. Here, hiking trails offer
                         opportunities to connect with nature and immerse oneself in Lebanon’s natural beauty.
                     </p>
-                    <img src="https://www.alyasavillage.com/wp-content/uploads/2023/11/0Q2A9612.avif">
+                    <img src="/img/story/alyasa.avif">
 
                 </div>
 

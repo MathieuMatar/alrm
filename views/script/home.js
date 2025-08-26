@@ -70,6 +70,10 @@ function moveGallery(className, direction) {
     });
 }
 
+window.addEventListener("load", () => {
+    moveGallery("slider", 0);
+});
+
 //moveGallery('gal1', 0);
 
 
