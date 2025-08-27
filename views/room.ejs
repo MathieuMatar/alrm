@@ -1,5 +1,4 @@
 <%- include('partials/s-top') %>
-  <link rel="stylesheet" href="/css/room.css">
   <style id="background-style">
     html {
       background-image: url('/img/rooms/<%= room.code %>/<%= room.code %> room Alyasa Village (1).avif');
@@ -8,7 +7,7 @@
   <header class="single-item-menu">
     <a href="/"><img width="150" src="/img/logo.avif"></a>
     <div class="tabs">
-      <button class="tab active" data-tab="room">Room</button>
+      <button class="tab active" data-tab="room"><%= room.name %> Room</button>
       <button class="tab" data-tab="details">Details</button>
       <button class="tab" data-tab="gallery">Gallery</button>
     </div>
@@ -20,18 +19,19 @@
     </a>
   </header>
   <div class="single-tab active" id="room">
-    <h1>
+    <!--h1>
       <%= room.name %>
-    </h1>
+    </h1-->
+    <br><br>
     <p>
-      <%= room.description %>
+      <%- room.description %>
     </p>
   </div>
   <div class="single-tab" id="details">
-    <h1>
+    <!--h1>
       <%= room.name%>
     </h1>
-    <h3>Details</h3>
+    <h3>Details</h3-->
     <div class="features">
       <% room.features.forEach(function(feature) { %>
         <span>
@@ -51,7 +51,7 @@
       <path d="m304-58-80-81 343-343-343-343 80-81 424 424L304-58Z" />
     </svg>
     <% for (let i=1; i <=6; i++) { %>
-      <img class="<%= i === 1 ? 'active' : '' %>" src="/img/rooms/<%= room.code %>/<%= room.code %> room Alyasa Village (<%= i %>).avif">
+      <img class="<%= i === 1 ? 'active' : '' %>" src="/img/rooms/<%= room.code %>/<%= room.code %> room Alyasa Village (<%= i %>).avif" alt="<%= room.name %> Room Gallery Image Alyasa Village Lebanon <%= i %>">
       <% } %>
   </div>
   <div class="book">

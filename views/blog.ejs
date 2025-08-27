@@ -1,139 +1,12 @@
 <%- include('partials/s-top') %>
-    <link rel="stylesheet" href="/css/activities.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div style="background: var(--gold);">
         <%- include('partials/header') %>
     </div>
-
-
-    <style>
-        section {
-            display: flex;
-            gap: 30px;
-            padding: 60px;
-        }
-
-        main {
-            flex: 3;
-        }
-
-        aside {
-            flex: 1;
-        }
-
-        .title {
-            display: flex;
-            height: 50px;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .title::after {
-            content: "";
-            border-top: 1px solid #9E9E9E;
-            width: 100%;
-            margin-left: 25px;
-        }
-
-        .content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            gap: 20px;
-        }
-
-        .single {
-            padding: 20px;
-            border-radius: 20px;
-            max-width: 300px;
-            width: 32%;
-            aspect-ratio: 2 / 3;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            color: white;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.3s ease;
-        }
-
-        .single span {
-            background: white;
-            color: black;
-            border-radius: 7px;
-            padding: 5px 10px;
-            width: fit-content;
-            margin-bottom: 20px;
-        }
-
-        .single:hover {
-            transform: translateY(-10px);
-        }
-
-        .aside-single {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .aside-single:hover {
-            transform: translateY(-5px);
-        }
-
-        .aside-single img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 15px;
-        }
-
-        .aside-single span {
-            color: var(--gray);
-        }
-
-        .aside-single p {
-            font-weight: bold;
-        }
-
-        .newsletter {
-            background-color: #e3e2e2;
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .newsletter input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            border: 1px solid gray;
-        }
-
-        .newsletter button {
-            background-color: #1a1d1c;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .newsletter>* {
-            display: block;
-            margin-bottom: 10px;
-
-        }
-    </style>
-
-
     <section>
         <main>
             <div class="title">
                 <h2>Blog</h2>
             </div>
-
             <div class="content">
                 <% blogs.forEach(blog=> { %>
                     <a href="/blog/<%= blog.slug %>" class="single"
@@ -151,7 +24,6 @@
                         </p>
                     </a>
                     <% }) %>
-
             </div>
         </main>
         <aside>
@@ -160,7 +32,7 @@
             </div>
             <% for (let f of featured) { %>
                 <a href="/blog/<%= f.slug %>" class="aside-single">
-                    <img src="/img/blog/<%= f.thumbnail %>">
+                    <img src="/img/blog/<%= f.thumbnail %>" alt="<%= f.title %> blog thumbnail Alyasa Village Lebanon">
                     <div>
                         <span>
                             <%= f.createdAt.getDate().toString().padStart(2, '0' ) %>/<%=
@@ -173,13 +45,12 @@
                     </div>
                 </a>
                 <% } %>
-
                     <div class="title">
                         <h3>Latest</h3>
                     </div>
                     <% for (let l of latest) { %>
                         <a class="aside-single">
-                            <img src="/img/blog/<%= l.thumbnail %>">
+                            <img src="/img/blog/<%= l.thumbnail %>" alt="<%= l.title %> blog thumbnail Alyasa Village Lebanon">
                             <div>
                                 <span>
                                     <%= l.createdAt.getDate().toString().padStart(2, '0' ) %>/<%=
@@ -192,7 +63,6 @@
                             </div>
                         </a>
                         <% } %>
-
                             <div class="title">
                                 <h3>Newsletter</h3>
                             </div>
@@ -201,14 +71,7 @@
                                 <input type="email" name="email" placeholder="Your email" required>
                                 <button type="submit">Subscribe</button>
                             </form>
-
-
         </aside>
     </section>
-
-
-
-
-
     <%- include('partials/footer') %>
         <%- include('partials/s-bottom') %>

@@ -1,0 +1,71 @@
+.intro {
+    color: white;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: center;
+    text-shadow: 0 0 9px var(--black);
+}
+
+section {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+/* hide radios */
+input[name="tabset"] {
+    display: none;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    gap: 20px;
+}
+
+.tabs label {
+    background: none;
+    border: 3px solid white;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: bold;
+    border-radius: 30px;
+    text-shadow: 0 0 9px var(--black);
+}
+
+/* tab content */
+.tab {
+    display: none;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #ffffff7a;
+    backdrop-filter: blur(2px);
+    margin: 0 20px;
+}
+
+.tab img {
+    width: 60%;
+    margin: 20px auto 0;
+    display: block;
+}
+
+/* show content depending on checked radio */
+#tab1:checked~section #content1 {
+    display: block;
+}
+
+#tab2:checked~section #content2 {
+    display: block;
+}
+
+/* active button styling */
+#tab1:checked~section .tabs label[for="tab1"],
+#tab2:checked~section .tabs label[for="tab2"] {
+    background: white;
+    color: black;
+    text-shadow: none;
+}

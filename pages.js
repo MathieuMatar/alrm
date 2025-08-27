@@ -64,7 +64,7 @@ router.get('/accommodations/:code/:roomcode', async (req, res) => {
     ]);
 
 
-    
+
 
     if (!room || room.Accomodation.code !== code) {
         return res.redirect('/');
@@ -127,7 +127,7 @@ router.get('/gallery', async (req, res) => {
     meta.html += ']';
 
     const seo = getSeo(meta, req, "/css/gallery.css");
-    
+
     res.status(200).render('gallery', { weddings, seo });
 });
 
@@ -142,7 +142,7 @@ router.get('/gallery/:name', async (req, res) => {
     }
     meta.html += ']';
 
-    const seo = getSeo(meta, req, "/css/gallery.css");
+    const seo = getSeo(meta, req, "/css/single-gallery.css");
 
 
     res.status(200).render('partials/gallery', { wedding: name, seo });
@@ -197,7 +197,7 @@ router.get('/blog/:slug', async (req, res) => {
     const meta = { ...blog };
     meta.thumbnail = `/img/blog/${blog.thumbnail}`;
     meta.html = `["/img/blog/${blog.thumbnail}"]`;
-    const seo = getSeo(meta, req, "/css/blog.css");
+    const seo = getSeo(meta, req, "/css/single-blog.css");
     if (!blog) return res.redirect('/');
     res.status(200).render('single-blog', { blog, featured, latest, seo });
 });
@@ -227,6 +227,8 @@ const transporter = nodemailer.createTransport({
 
 router.post('/contact', async (req, res) => {
     const { name, email, message } = req.body;
+    const meta = await Page.findOne({ where: { type: 'seo', slug: 'contact' }, raw: true });
+    const seo = getSeo(meta, req, "/css/contact.css");
 
     try {
         // prepare emails
@@ -254,10 +256,10 @@ router.post('/contact', async (req, res) => {
             transporter.sendMail(mailToUser)
         ]);
 
-        res.status(200).render('contact', { success: true });
+        res.status(200).render('contact', { success: true, seo });
     } catch (error) {
         console.error(error);
-        res.status(500).render('contact', { success: false });
+        res.status(500).render('contact', { success: false, seo });
     }
 });
 
@@ -285,7 +287,6 @@ router.get('/:page', async (req, res) => {
 router.get('*', (req, res) => {
     res.redirect('/');
 });
-
 
 
 function getSeo(meta, req, css) {

@@ -1,5 +1,4 @@
 <%- include('partials/s-top') %>
-  <link rel="stylesheet" href="/css/venue.css">
   <nav>
     <a href="/"><img src="/img/s-logo.avif" class="logo"></a>
     <% for (let v of venues) { %>
@@ -68,6 +67,7 @@
         <% } %>
     </div>
     <div class="map">
+      <!-- eslint-disable-next-line -->
       <div style="background-position: <%= maps.left %>% <%= maps.top %>%;">
         <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#EA3323">
           <path
@@ -78,5 +78,4 @@
   </div>
 
   <script src="/script/venue.js"></script>
-
   <%- include('partials/s-bottom') %>

@@ -1,80 +1,26 @@
 <%- include('partials/s-top') %>
-    <link rel="stylesheet" href="/css/activities.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        .intro {
-            color: white;
-            padding: 20px;
-            margin: 0 auto;
-            max-width: 800px;
-            text-align: center;
-            text-shadow: 0 0 9px var(--black);
-        }
-
-        section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding-bottom: 40px;
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-            gap: 20px;
-        }
-
-        .tabs button {
-            background: none;
-            border: 3px solid white;
-            color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-weight: bold;
-            border-radius: 30px;
-            text-shadow: 0 0 9px var(--black);
-        }
-
-        .tab {
-            padding: 30px;
-            border-radius: 20px;
-            background-color: #ffffff7a;
-            backdrop-filter: blur(2px);
-        }
-
-        .tab img {
-            width: 60%;
-            margin: 0 auto;
-            display: block;
-            margin-top: 20px;
-        }
-
-        .active {
-            background-color: white !important;
-            color: black !important;
-            text-shadow: none !important;
-        }
-    </style>
-
-
     <div
         style="background-image: url('/img/story/background.avif'); min-height: 100vh; background-size: cover; background-position: center;">
         <%- include('partials/header') %>
+            <br><br>
 
-            <h1>Our Story</h1>
-            <p class="intro">Discover a one-of-a-kind venue in the region! Alyasa Village boasts beautiful
-                weather at an altitude of
+            <p class="intro">
+                Discover a one-of-a-kind venue in the region! Alyasa Village boasts beautiful weather at an altitude of
                 1100m, just 30 minutes away from Byblos. Our unique setting includes a historic church neighbored by old
-                oak trees, dedicated to the Prophet Alishaa.</p>
+                oak trees, dedicated to the Prophet Alishaa.
+            </p>
+
+            <!-- Radios placed before section so ~ selector works -->
+            <input type="radio" name="tabset" id="tab1" checked>
+            <input type="radio" name="tabset" id="tab2">
 
             <section>
                 <div class="tabs">
-                    <button class="active">About the Prophet Alishaa</button>
-                    <button>About Alyasa Village</button>
+                    <label for="tab1">About the Prophet Alishaa</label>
+                    <label for="tab2">About Alyasa Village</label>
                 </div>
-                <div class="tab">
+
+                <div class="tab" id="content1">
                     <p>
                         The Church of Saint Alishaa, one of Lebanon’s oldest churches dedicated to the prophet, dates
                         back to 1151 AD. Alishaa, a disciple of the prophet Elijah, hails from the town of Abel Mehola,
@@ -83,54 +29,44 @@
                         Shalishah. He healed the Syrian army commander Naaman of leprosy and passed away at the age of
                         102, with his burial in Samaria 847 years prior to the birth of Jesus Christ.
                     </p>
-                    <p>In the modern era, the El Khazen family, has taken on the responsibility of preserving and caring
+                    <p>
+                        In the modern era, the El Khazen family, has taken on the responsibility of preserving and
+                        caring
                         for the Church of Saint Alishaa. Under El Khazen family leadership, the church has undergone
                         meticulous restoration, preserving its historical and spiritual significance for future
                         generations. Beyond restoration, El Khazen family fosters a vibrant sense of community, hosting
-                        annual events that unite believers in faith & fellowship.</p>
-                    <img
-                        src="/img/story/church.avif">
+                        annual events that unite believers in faith & fellowship.
+                    </p>
+                    <img src="/img/story/church.avif" alt="Church of Saint Alishaa Alyasa Village Lebanon">
                 </div>
 
-                <div class="tab" style="display: none;">
-                    <p>Crafted with meticulous attention to detail, Alyasa Village reflects the unwavering commitment of
+                <div class="tab" id="content2">
+                    <p>
+                        Crafted with meticulous attention to detail, Alyasa Village reflects the unwavering commitment
+                        of
                         the El Khazen family to Lebanese heritage & community development. The venue boasts a range of
                         amenities including lodging spaces, a gym, sports arenas, and a pool, providing guests with a
-                        luxurious yet authentic Lebanese experience.</p>
+                        luxurious yet authentic Lebanese experience.
+                    </p>
                     <p>
-                        Alyasa Village was to build upon the rich history of joyful events centered
-                        around the church while elevating the experience with modern amenities and a focus on hygiene
-                        standards. Whether guests seek relaxation in the steam room or a refreshing dip in the nested
-                        pool, Alyasa Village ensures a high standard of comfort and luxury.</p>
+                        Alyasa Village was to build upon the rich history of joyful events centered around the church
+                        while
+                        elevating the experience with modern amenities and a focus on hygiene standards. Whether guests
+                        seek
+                        relaxation in the steam room or a refreshing dip in the nested pool, Alyasa Village ensures a
+                        high
+                        standard of comfort and luxury.
+                    </p>
                     <p>
                         Beyond the confines of the venue, visitors are invited to explore the surrounding area,
-                        including the historic cedar forest reserve in the town of JAJ. Here, hiking trails offer
-                        opportunities to connect with nature and immerse oneself in Lebanon’s natural beauty.
+                        including
+                        the historic cedar forest reserve in the town of JAJ. Here, hiking trails offer opportunities to
+                        connect with nature and immerse oneself in Lebanon’s natural beauty.
                     </p>
-                    <img src="/img/story/alyasa.avif">
-
+                    <img src="/img/story/alyasa.avif" alt="Alyasa Village Lebanon Overview">
                 </div>
-
             </section>
     </div>
-
-    <script>
-        const buttons = document.querySelectorAll('.tabs button');
-        const tabs = document.querySelectorAll('.tab');
-
-        buttons.forEach((button, index) => {
-            button.addEventListener('click', () => {
-                buttons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                tabs.forEach(tab => tab.style.display = 'none');
-                tabs[index].style.display = 'block';
-            });
-        });
-    </script>
-
-
-
 
     <%- include('partials/footer') %>
         <%- include('partials/s-bottom') %>

@@ -1,204 +1,13 @@
 <%- include('partials/s-top') %>
-    <link rel="stylesheet" href="/css/activities.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div
         style="background-image: url(/img/banners/activities.avif); background-size: cover; background-position: center;">
         <%- include('partials/header') %>
     </div>
-
-    <style>
-        .contact-page {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px;
-        }
-
-        .contact-text,
-        .contact-page>form {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .contact-text {
-            padding-bottom: 200px;
-            position: relative
-        }
-
-        .contact-page>form {
-            padding-bottom: 0;
-        }
-
-        .contact-text p {
-            max-width: 350px;
-            color: #575858;
-        }
-
-        .contact-page strong {
-            color: black;
-        }
-
-        .career {
-            background-color: #efefef;
-            border: 1px solid #dcdcdc;
-            border-radius: 15px;
-            padding: 15px;
-            width: fit-content;
-            position: absolute;
-            bottom: 0;
-        }
-
-        .career a {
-            color: #efefef;
-            background-color: #1a1d1c;
-            border-radius: 10px;
-            padding: 10px 20px;
-            display: block;
-            width: fit-content;
-            margin-top: 20px;
-            margin-bottom: 10px;
-
-        }
-
-        form label {
-            color: #575858;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        form input,
-        form textarea,
-        form button {
-            border: 1px solid #dcdcdc;
-            background-color: #efefef;
-            border-radius: 15px;
-            padding: 15px;
-            width: 100%;
-            margin-bottom: 25px;
-        }
-
-        form button {
-            background-color: #a0a0a0;
-            color: white;
-            width: fit-content;
-            padding: 15px 25px;
-            font-weight: bold;
-            border: none;
-            margin-bottom: 0;
-            cursor: pointer;
-        }
-
-        form button:hover {
-            background-color: #1a1d1c;
-        }
-
-        .contact-info {
-            background-color: #efefef;
-            border: 1px solid #dcdcdc;
-            border-radius: 15px;
-            padding: 40px !important;
-            gap: 40px;
-            display: flex;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        .contact-info div {
-            flex: 1;
-        }
-
-        .contact-info iframe {
-            flex: 1;
-            border: 0;
-            border-radius: 15px;
-            min-height: 300px;
-        }
-
-        .contact-info p {
-            margin-bottom: 10px;
-            color: #575858;
-            font-size: 16px;
-        }
-
-        .contact-info a {
-            color: #1a1d1c;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 20px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .contact-page:nth-of-type(3) {
-            padding: 60px;
-        }
-
-        @media screen and (max-width: 950px) {
-            .contact-page {
-                flex-direction: column;
-                padding: 20px;
-            }
-
-            .contact-page {
-                padding: 0;
-            }
-
-            .contact-page:nth-of-type(3) {
-                padding: 20px;
-                margin-top: 100px;
-            }
-
-            .contact-info {
-                padding: 20px !important;
-            }
-
-            .contact-text {
-                padding: 20px;
-            }
-
-            .career {
-                position: relative;
-                margin-top: 30px;
-            }
-
-        }
-
-        .sucess {
-            background-color: #1a1d1c;
-            border: 1px solid #dcdcdc;
-            border-radius: 15px;
-            padding: 15px 30px;
-            width: fit-content;
-            text-align: center;
-            margin: 0 auto;
-            margin-top: 25px;
-            font-size: 20px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-    </style>
-
-
     <% if (typeof success !=='undefined' && success) { %>
         <p class="sucess" style="color: #28a745;">Message sent successfully!</p>
         <% } else if (typeof success !=='undefined' && !success) { %>
             <p class="sucess" style="color: #dc3545;">Failed to send message. Please try again.</p>
             <% } %>
-
-                <script>
-                    setTimeout(function () {
-                        const success = document.querySelector('.sucess');
-                        success.style.padding = 0;
-                        success.style.marginTop = 0;
-                        success.style.fontSize = '0';
-                        //sleep for a second
-                        setTimeout(function () {
-                            success.style.display = 'none';
-                        }, 300);
-                    }, 3000);
-                </script>
-
                 <div class="contact-page">
                     <div class="contact-text">
                         <h2>Get in Touch</h2>
@@ -243,12 +52,7 @@
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3400.4323887253117!2d35.7840825!3d34.1576584!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f57b4172b2865%3A0x756a6abff0809670!2sAlyasa%20Village!5e1!3m2!1sen!2slb!4v1755588434082!5m2!1sen!2slb"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
                     </div>
                 </div>
-
-
-
                 <%- include('partials/footer') %>
                     <%- include('partials/s-bottom') %>

@@ -1,19 +1,18 @@
 <%- include('partials/s-top') %>
-    <link rel="stylesheet" href="/css/home.css">
-
     <div class="banner" style="background-image: url('img/home-banners/1.avif');">
         <%- include('partials/header') %>
             <div>
                 <div class="banner-images">
                     <% for (let i=1; i <=4; i++) { %>
-                        <img class="<%= i === 1 ? 'active' : '' %>" src="img/home-banners/<%= i %>.avif">
+                        <img class="<%= i === 1 ? 'active' : '' %>" src="img/home-banners/<%= i %>.avif" alt="Alyasa Village Banner Image <%= i %>">
                         <% } %>
                 </div>
-                <div class="banner-book">
+                <!--div class="banner-book">
                     <button>your dates</button>
                     <button>2 adults 2 children</button>
                     <button class="book-now">Book Now</button>
-                </div>
+                </div-->
+                <a href="https://alyasavillage.bookingmystay.com/" class="book-now-banner">Book Now</a>
             </div>
     </div>
 
@@ -24,12 +23,11 @@
         <p><%- home.description %></p>
         <div class="intro-gallery">
             <% for (let i=1; i <=10; i++) { %>
-                <img src="img/home-gallery/<%= i %>.avif">
+                <img src="img/home-gallery/<%= i %>.avif" alt="Alyasa Village Gallery Image <%= i %>">
                 <% } %>
         </div>
         <a class="goldbtn" href="/story">Read our story</a>
     </div>
-    <br><br><br><br><br><br>
     <div class="venues" id="venues">
         <h1>Our Venues</h1>
         <a href="/<%= venues[0].code %>" class="venues-image"
@@ -54,12 +52,12 @@
                         </span>
                         <% }); %>
                             <% } %>
-                            <a href="/<%= venue.code %>" class="goldbtn">Discover More</a>
+                                <a href="/<%= venue.code %>" class="goldbtn">Discover More</a>
 
             </div>
             <% }); %>
     </div>
-    <br><br><br><br>
+    <br><br>
     <h1>Our Accommodations</h1>
     <div class=" accommodations">
 
@@ -78,17 +76,17 @@
         <div>
             <div class="gal slider">
                 <% for (let accomodation of accomodations) { %>
-                    <img src="img/<%= accomodation.code %>/2.avif">
+                    <img src="img/<%= accomodation.code %>/2.avif" alt="<%= accomodation.name %> Accommodation Image Alyasa Village Lebanon 2">
                     <% } %>
             </div>
             <div class="gal slider">
                 <% for (let accomodation of accomodations) { %>
-                    <img src="img/<%= accomodation.code %>/3.avif">
+                    <img src="img/<%= accomodation.code %>/3.avif" alt="<%= accomodation.name %> Accommodation Image Alyasa Village Lebanon 3">
                     <% } %>
             </div>
             <div class="gal slider">
                 <% for (let accomodation of accomodations) { %>
-                    <img src="img/<%= accomodation.code %>/4.avif">
+                    <img src="img/<%= accomodation.code %>/4.avif" alt="<%= accomodation.name %> Accommodation Image Alyasa Village Lebanon 4">
                     <% } %>
             </div>
             <div class="acc-info slider">
@@ -107,15 +105,16 @@
                                             </span>
                                             <% }); %>
                                                 <% } %>
-                                                <p>
-                        <%= accomodation.description %>
-                    </p>
+                                                    <p>
+                                                        <%= accomodation.description %>
+                                                    </p>
                     </div>
                     <% } %>
             </div>
 
             <div class="acc-buttons">
-                <button onclick="window.open('https://alyasavillage.bookingmystay.com/', '_blank')" class="acc-book">Book Now</button>
+                <button onclick="window.open('https://alyasavillage.bookingmystay.com/', '_blank')"
+                    class="acc-book">Book Now</button>
                 <button onclick="window.location.href='/accommodations/'" class="acc-more">More Info</button>
                 <svg onclick="moveGallery('slider', -1)" viewBox="0 0 100 60">
                     <path d="M25 30 L70 30 M70 30 L55 15 M70 30 L55 45" />
@@ -147,7 +146,8 @@
     <div class="activities">
         <div>
             <% for (let i=0; i < activities.length; i++) { %>
-                <div class="activity <%= i === 0 ? 'active' : '' %>" img="img/activities/<%= activities[i].code %>.avif">
+                <div class="activity <%= i === 0 ? 'active' : '' %>"
+                    img="img/activities/<%= activities[i].code %>.avif">
                     <h4>
                         <%= activities[i].name %>
                     </h4>
@@ -197,44 +197,9 @@
     <%- review %>
         <script src="https://cdn.trustindex.io/loader.js"></script>
 
-
-        <style>
-            .map {
-                background-image: url(/img/map.avif);
-                aspect-ratio: 7 / 5;
-                background-size: contain;
-                background-position: center;
-                position: relative;
-                margin: 25px 10%;
-            }
-
-            .map div {
-                width: 20px;
-                height: 20px;
-                background-color: var(--gold);
-                border: 2px solid var(--gray);
-                border-radius: 50px;
-                position: absolute;
-                cursor: pointer;
-            }
-
-            .map div a {
-                position: absolute;
-                display: none;
-                background-color: antiquewhite;
-                margin-left: 20px;
-                padding: 5px 10px;
-                border-radius: 5px;
-
-            }
-
-            .map div:hover a {
-                display: block;
-            }
-        </style>
-
         <div class="map">
             <% for(let m of mapData) { %>
+                <!-- eslint-disable-next-line -->
                 <div style="left:<%= m.left %>%; top: <%= m.top %>%">
                     <a target="_blank" href="<%= m.url %>">
                         <%= m.name %>
@@ -242,12 +207,6 @@
                 </div>
                 <% } %>
         </div>
-
-
-
-
-
-
 
         <script src="/script/home.js"></script>
 

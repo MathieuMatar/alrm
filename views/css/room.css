@@ -31,22 +31,28 @@ header a:first-child {
 button {
     background-color: transparent;
     border: none;
-    color: rgb(99, 99, 99);
+    color: white;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 1.2rem;
 }
 
-button.active {
-    color: black;
+.tab {
+    text-shadow: 0 0 9px var(--black);
 }
 
-button.active::before {
+button.active {
+    color: var(--gold);
+    font-weight: bold;
+    text-shadow: none;
+}
+
+/*button.active::before {
     content: "● ";
     color: var(--gold);
     font-size: 1em;
     margin-right: 0.5em;
-}
+}*/
 
 .close {
     cursor: pointer;

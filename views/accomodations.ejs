@@ -23,13 +23,15 @@
         <%for (let room of rooms) { %>
             <a acc="r<%= room.accomodationId %>" href="/accommodations/<%= room.Accomodation.code %>/<%= room.code %>">
                 <div class="room-img" style="background-image: url('/img/rooms/<%= room.code %>/<%= room.code %> room Alyasa Village (1).avif');">
-                    <span>info info</span>
-                    View Details
+                    <!--span>info info</span-->
+                    <!--View Details -->
                 </div>
                 <strong>
                     <%= room.name %>
                 </strong>
-                <p>$100/night</p>
+                <br>
+                <p>View Details</p>
+                <!--p>$100/night</p-->
             </a>
             <% } %>
     </div>

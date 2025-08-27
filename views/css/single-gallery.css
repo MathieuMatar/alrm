@@ -1,0 +1,72 @@
+.main-parent {
+    background: #25252c;
+}
+
+.items {
+    height: 20vh;
+    padding: 10px;
+    display: flex;
+    overflow-x: scroll;
+    gap: 10px;
+}
+
+.items img {
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-container {
+    height: 80vh;
+    width: 100%;
+    padding-top: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.main {
+    max-height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+}
+
+.main-container svg {
+    width: 48px;
+    height: 70px;
+    fill: #FFFFFF;
+    background: #7c7c94;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.main-container svg:first-child {
+    position: absolute;
+    right: 10px;
+    top: 35px;
+    transform: translateY(-50%);
+    height: 48px;
+}
+
+.main-container svg:nth-child(2) {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.main-container svg:last-child {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.items img.active {
+    box-shadow: 0px 0px 0px 2px white;
+}

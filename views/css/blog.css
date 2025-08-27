@@ -1,0 +1,136 @@
+section {
+    display: flex;
+    gap: 30px;
+    padding: 60px;
+    flex-wrap: wrap;
+}
+
+main {
+    flex: 3;
+}
+
+aside {
+    flex: 1;
+}
+
+.title {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title::after {
+    content: "";
+    border-top: 1px solid #9E9E9E;
+    width: 100%;
+    margin-left: 25px;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.single {
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 300px;
+    min-width: 230px;
+    width: 32%;
+    aspect-ratio: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+    flex: 30%;
+}
+
+.single span {
+    background: white;
+    color: black;
+    border-radius: 7px;
+    padding: 5px 10px;
+    width: fit-content;
+    margin-bottom: 20px;
+}
+
+.single:hover {
+    transform: translateY(-10px);
+}
+
+.aside-single {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.aside-single:hover {
+    transform: translateY(-5px);
+}
+
+.aside-single img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+}
+
+.aside-single span {
+    color: var(--gray);
+}
+
+.aside-single p {
+    font-weight: bold;
+}
+
+.newsletter {
+    background-color: #e3e2e2;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.newsletter input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+}
+
+.newsletter button {
+    background-color: #1a1d1c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter>* {
+    display: block;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 850px) {
+    section {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+    }
+
+    .content {
+        justify-content: center;
+    }
+
+    .single {
+        flex: 30%;
+    }
+}

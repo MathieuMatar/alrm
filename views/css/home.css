@@ -10,6 +10,21 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
+    border-radius: 0px !important;
+    /* Scroll animation */
+    animation: grow 1s linear;
+    animation-timeline: scroll(root);
+    animation-range: 0% 100%;
+}
+
+@keyframes grow {
+    from {
+        border-radius: 0px !important;
+    }
+
+    to {
+        border-radius: 30px !important;
+    }
 }
 
 .banner-images {
@@ -67,6 +82,21 @@
     color: var(--white) !important;
 }
 
+.book-now-banner {
+    background-color: var(--gray);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.book-now-banner:hover {
+    background-color: var(--dark-gray);
+}
+
 @media (max-width: 1000px) {
     .banner-images {
         gap: 10px;
@@ -91,7 +121,7 @@
 
 /* intro */
 .intro {
-    height: 100vh;
+    /* height: 100vh; */
     padding: 100px;
     text-align: center;
     padding-top: 80px;
@@ -328,6 +358,10 @@
     top: 0;
 }
 
+.single-acc-ing {
+    background-color: white;
+}
+
 .acc-info {
     width: 100%;
     height: calc(100% - 20vw - 60px);
@@ -393,12 +427,12 @@
 
 
 .venues {
-    height: 100vh;
+    /*height: 100vh;*/
     padding: 0 150px;
 }
 
 .venues-image {
-    height: 60%;
+    height: 57vh;
     width: 100%;
     border-radius: 15px;
     background-attachment: fixed;
@@ -687,4 +721,41 @@
     .nightlife>div {
         padding: 0px 20px;
     }
+}
+
+
+
+/* Map */
+
+.map {
+    background-image: url(/img/map.avif);
+    aspect-ratio: 7 / 5;
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    margin: 25px 10%;
+}
+
+.map div {
+    width: 20px;
+    height: 20px;
+    background-color: var(--gold);
+    border: 2px solid var(--gray);
+    border-radius: 50px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.map div a {
+    position: absolute;
+    display: none;
+    background-color: antiquewhite;
+    margin-left: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+}
+
+.map div:hover a {
+    display: block;
 }
