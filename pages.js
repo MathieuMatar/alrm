@@ -1,9 +1,32 @@
 import express from 'express';
+import NodeCache from 'node-cache';
 import { Accomodation, Venue, Room, Other, Map, Page } from './models.js';
 import nodemailer from 'nodemailer';
 import { name, render } from 'ejs';
 
 const router = express.Router();
+
+// ✅ Setup NodeCache
+const myCache = new NodeCache({ stdTTL: 86400 }); // cache 24h
+function cacheMiddleware(req, res, next) {
+    if (req.method !== 'GET') return next(); // skip POST, PUT, DELETE
+
+    const key = req.originalUrl;
+    const cachedResponse = myCache.get(key);
+
+    if (cachedResponse) {
+        return res.send(cachedResponse); // serve cached
+    } else {
+        res.originalSend = res.send;
+        res.send = (body) => {
+            myCache.set(key, body); // save to cache
+            res.originalSend(body); // send to client
+        };
+        next();
+    }
+}
+
+router.use(cacheMiddleware);
 
 router.get('/', async (req, res) => {
 
