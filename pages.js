@@ -5,10 +5,6 @@ import { name, render } from 'ejs';
 
 const router = express.Router();
 
-router.get('/t', (req, res) => {
-    res.render('test');
-});
-
 router.get('/', async (req, res) => {
 
     const baseUrl = req.protocol + '://' + req.get('host');
