@@ -55,6 +55,7 @@
     padding: 10px 15px;
     white-space: nowrap;
     font-weight: bold;
+    text-shadow: 0 0 20px black;
 }
 
 .daterangepicker {
