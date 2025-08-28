@@ -89,6 +89,7 @@ body {
     align-items: flex-end;
     flex-shrink: 0;
     transition: all 0.3s ease;
+    background-position: center;
 }
 
 .section-item>div {
@@ -171,7 +172,7 @@ body {
     margin-left: -50px;
     object-fit: cover;
     object-position: center;
-    background-image: url('/img/blog/1267[1].jpg');
+    background-image: url('/img/wellness/pool.avif');
     background-size: cover;
     background-position: center;
 }
@@ -227,7 +228,7 @@ input[type="radio"][name="tab"] {
 }
 
 .card2 {
-    background-image: url("/img/blog/1267[1].jpg");
+    background-image: url("/img/wellness/pool.avif");
 }
 
 .card4 {
@@ -239,7 +240,7 @@ input[type="radio"][name="tab"] {
 }
 
 #tab1:checked~.cards .card2 {
-    background-image: url("/img/blog/istockphoto-1460715503-612x612.jpg");
+    background-image: url("/img/wellness/massage.avif");
 }
 
 #tab2:checked~.cards #sauna {
@@ -247,7 +248,7 @@ input[type="radio"][name="tab"] {
 }
 
 #tab2:checked~.cards .card2 {
-    background-image: url("/img/blog/istockphoto-827324092-612x612.jpg");
+    background-image: url("/img/wellness/sauna.avif");
 }
 
 #tab3:checked~.cards #jacuzzi {
@@ -255,7 +256,7 @@ input[type="radio"][name="tab"] {
 }
 
 #tab3:checked~.cards .card2 {
-    background-image: url("/img/blog/istockphoto-1265622456-612x612.jpg");
+    background-image: url("/img/wellness/jacuzzi.avif");
 }
 
 #tab1:checked~.cards .card1,

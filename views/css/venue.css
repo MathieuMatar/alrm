@@ -26,7 +26,11 @@ body {
     margin: 8%;
     background-color: #f4f1eb;
     border-radius: 15px;
-    /*padding: 5%;*/
+    padding: 5%;
+}
+
+.map {
+    padding: 0 !important;
 }
 
 .gallery {
@@ -194,7 +198,7 @@ body {
 }
 
 .gallery p {
-    max-height: 30%;
+    max-height: 45%;
     overflow: hidden;
     text-overflow: ellipsis;
 }

@@ -1,0 +1,47 @@
+<!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<!-- Moment.js -->
+<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<!-- Date Range Picker -->
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<div class="igloo book">
+    <!-- Date input -->
+    <input type="text" id="datePicker" placeholder="Your dates" readonly data="" />
+
+    <!-- Guest input -->
+    <div class="guest-wrapper">
+        <input type="text" id="guestInput" class="guest-input" readonly placeholder="Select guests" data="" />
+        <div class="guest-dropdown" id="guestDropdown">
+            <div class="guest-row">
+                <div class="guest-label">
+                    <span>Adults</span>
+                    <div class="counter">
+                        <button type="button" class="minus" data-type="adult">-</button>
+                        <span id="adultCount">0</span>
+                        <button type="button" class="plus" data-type="adult">+</button>
+                    </div>
+                </div>
+                <div class="helper">Ages 13+</div>
+            </div>
+            <div class="guest-row">
+                <div class="guest-label">
+                    <span>Children</span>
+                    <div class="counter">
+                        <button type="button" class="minus" data-type="child">-</button>
+                        <span id="childCount">0</span>
+                        <button type="button" class="plus" data-type="child">+</button>
+                    </div>
+                </div>
+                <div class="helper">Ages 0–12</div>
+            </div>
+            <div id="childrenAges"></div>
+        </div>
+    </div>
+
+    <!-- Book button -->
+    <button onclick="submit()">BOOK NOW</button>
+</div>
+
+<script src="script/book.js"></script>

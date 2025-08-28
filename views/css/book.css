@@ -1,0 +1,231 @@
+.igloo {
+    width: fit-content;
+    border-radius: 30px;
+    display: flex;
+}
+
+.igloo input,
+.igloo>button {
+    padding: 10px 1px 10px 45px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: normal;
+    color: white;
+    cursor: pointer;
+}
+
+#datePicker::placeholder,
+.guest-input::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+#datePicker {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-right: 2px solid #c7c6c6;
+    background-color: #626161;
+    color: white;
+    width: 170px;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M96 32v32H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48h-48V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v32H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32m352 160H0v272c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: left 15px center;
+    background-size: 22px 22px;
+}
+
+.guest-input {
+    border-radius: 0;
+    border-right: 2px solid #c7c6c6;
+    background-color: #626161;
+    color: white;
+    width: 185px;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256a128 128 0 1 0 0-256 128 128 0 1 0 0 256m-45.7 48C79.8 304 0 383.8 0 482.3 0 498.7 13.3 512 29.7 512h388.6c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: left 15px center;
+    background-size: 22px 22px;
+}
+
+.igloo>button {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: var(--gold);
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.daterangepicker {
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+}
+
+.daterangepicker td.active,
+.daterangepicker td.active:hover,
+.daterangepicker td.in-range {
+    background-color: var(--gold) !important;
+    color: white !important;
+}
+
+.daterangepicker td.available:hover {
+    background-color: #ffe599 !important;
+}
+
+.daterangepicker .drp-buttons,
+.daterangepicker .drp-selected,
+.daterangepicker:before,
+.daterangepicker:after {
+    display: none !important;
+}
+
+.guest-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.guest-dropdown {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 6px;
+    background: #fff;
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 15px;
+    width: 320px;
+    display: none;
+    left: -50%;
+    z-index: 1000;
+}
+
+.guest-row {
+    margin-bottom: 12px;
+}
+
+.guest-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.helper {
+    font-size: 12px;
+    color: #777;
+    margin-top: 2px;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.counter button {
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.counter span {
+    min-width: 20px;
+    text-align: center;
+}
+
+.child-age {
+    margin-top: 10px;
+}
+
+.child-age label {
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+select {
+    border: 1px solid var(--gold);
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.guest-label>span {
+    color: black;
+}
+
+@media (max-width: 850px) {
+
+    .igloo>button {
+        display: block !important;
+    }
+
+    .igloo input,
+    .igloo>button {
+        font-size: 12px;
+        background-size: 14px !important;
+        background-position: left 13px center;
+    }
+
+    .igloo input {
+        padding-left: 35px;
+    }
+
+    #datePicker {
+        width: 130px;
+    }
+
+    .guest-input {
+        width: 155px;
+    }
+
+    .guest-dropdown {
+        left: auto;
+        right: -50%;
+    }
+
+    .daterangepicker.drop-up {
+        left: auto !important;
+        right: 10px !important;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .igloo>input,
+    #guestInput {
+        font-size: 0 !important;
+        height: 35px;
+        width: 45px !important;
+        background-position: center;
+    }
+
+    .igloo>button {
+        height: 35px;
+    }
+
+    /*.igloo {
+            flex-direction: column;
+        }
+
+        #datePicker {
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 0;
+            border-right: none;
+            border-bottom: 2px solid #c7c6c6;
+            width: max-content;
+        }
+
+        .igloo>button {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-top-right-radius: 0;
+        }
+
+        .igloo input,
+        .igloo>button {
+            width: 150px !important;
+        }*/
+
+}

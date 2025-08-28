@@ -1,3 +1,5 @@
+@import url("/css/book.css");
+
 html {
     background-size: cover;
     background-position: center;
@@ -67,37 +69,10 @@ button.active {
 }
 
 .book {
-    background-color: var(--white);
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    overflow: hidden;
-    width: fit-content;
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 55%);
-    display: flex;
-    white-space: nowrap;
-}
-
-.book button {
-    background-color: transparent;
-    border: none;
-    padding: 7px 15px;
-    cursor: pointer;
-    font-size: 20px;
-    color: var(--dark-gray);
-}
-
-.book-now {
-    background-color: var(--gray) !important;
-    color: var(--white) !important;
-}
-
-.book-now:hover {
-    background-color: var(--dark-gray) !important;
-    color: var(--white) !important;
 }
 
 .single-tab {

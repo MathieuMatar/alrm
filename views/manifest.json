@@ -1,0 +1,30 @@
+{
+    "name": "Alyassa Village",
+    "short_name": "Alyassa",
+    "description": "Alyasa Village - Luxury Lebanese Retreat & Event Venue",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "white",
+    "theme_color": "#b48f5c",
+    "icons": [
+        {
+            "src": "img/icon.png",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "img/logo.svg",
+            "type": "image/svg+xml"
+        }
+    ],
+    "lang": "en"
+}
