@@ -6,6 +6,7 @@ import { name, render } from 'ejs';
 
 const router = express.Router();
 
+
 // ✅ Setup NodeCache
 const myCache = new NodeCache({ stdTTL: 86400 }); // cache 24h
 function cacheMiddleware(req, res, next) {
@@ -69,7 +70,7 @@ router.get('/accommodations/:code?', async (req, res) => {
 
     const seo = getSeo(meta, req, "/css/accomodations.css");
 
-    res.status(200).render('accomodations', { accomodations, rooms, intro, seo });
+    res.status(200).render('accomodations', { accomodations, rooms, intro, seo, code });
 });
 
 

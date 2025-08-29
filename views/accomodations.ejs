@@ -9,20 +9,99 @@
     <p id="description">
         <%= intro.description %>
     </p>
-    <div class="accomodations">
+
+    <style>
+        .rooms a {
+            display: none;
+        }
+
+        [class="rooms"] a {
+            display: block;
+        }
+
+
+
+
+        <% 
+        const transform = [
+            'transform: translate(210px, 40px) rotate(320deg); z-index: 3;', 
+            'transform: translate(100px, 10px) rotate(340deg); z-index: 4;', 
+            'transform: translate(0, 0) rotate(0deg); z-index: 5;', 
+            'transform: translate(-100px, 10px) rotate(-340deg); z-index: 4;', 
+            'transform: translate(-210px, 40px) rotate(-320deg); z-index: 3;']; 
+
+        const transformMobile = [
+            'transform: translate(80px, 30px) rotate(-40deg); z-index: 3;',
+            'transform: translate(32px, 7px) rotate(-20deg); z-index: 4;',
+            'transform: translate(0, 0) rotate(0deg); z-index: 5;',
+            'transform: translate(-32px, 7px) rotate(20deg); z-index: 4;',
+            'transform: translate(-80px, 30px) rotate(40deg); z-index: 3;'
+        ]
+        %>
+
         <% for (let accomodation of accomodations) { %>
-            <a href="/accommodations/<%= accomodation.code %>" title="<%= accomodation.name %>"
+            .accomodations #r<%=accomodation.id %> {
+                order: <%=accomodation.id %>;
+                <%=transform[accomodation.id - 1] %>
+            }
+        <% } %>
+        <% for (let accomodation of accomodations) { %>
+            .accomodations.<%=accomodation.code %> #r<%=accomodation.id %> {
+                order: 3;
+                <%=transform[2] %>
+            }
+
+            .accomodations.<%=accomodation.code %> #r3 {
+                order: <%=accomodation.id %>;
+                <%=transform[accomodation.id - 1] %>
+            }
+        <% } %>
+
+        <% for (let accomodation of accomodations) { %>
+            .rooms.<%=accomodation.code %> a[acc="r<%= accomodation.id %>"],
+        <% } %>
+        .holder {
+            display: block;
+        }
+
+        @media screen and (max-width: 768px) {
+            <% for (let accomodation of accomodations) { %>
+            .accomodations #r<%=accomodation.id %> {
+                <%=transformMobile[accomodation.id - 1] %>
+            }
+            <% } %>
+            <% for (let accomodation of accomodations) { %>
+            .accomodations.<%=accomodation.code %> #r<%=accomodation.id %> {
+                <%=transformMobile[2] %>
+            }
+            .accomodations.<%=accomodation.code %> #r3 {
+                <%=transformMobile[accomodation.id - 1] %>
+            }
+            <% } %>
+        }
+
+        [class="accomodations"] a {
+            transform: none !important;
+            
+        }
+    </style>
+
+
+    <div class="accomodations<% if(code) { %> <%= code %> <% } %>">
+        <% for (let accomodation of accomodations) { %>
+            <a onclick="set(this, event)" href="/accommodations/<%= accomodation.code %>" title="<%= accomodation.name %>"
                 description="<%= accomodation.description %>"
                 style="background-image: url('/img/<%= accomodation.code %>/1.avif');" id="r<%= accomodation.id %>">
                 <%= accomodation.name %>
             </a>
             <% } %>
     </div>
-    <a title="<%= intro.name %>" description="<%= intro.description %>" href="/accommodations" id="show-all">ALL</a>
-    <div class="rooms">
+    <a onclick="set(this, event)" title="<%= intro.name %>" description="<%= intro.description %>" href="/accommodations" id="show-all">ALL</a>
+    <div class="rooms<% if(code) { %> <%= code %> <% } %>">
         <%for (let room of rooms) { %>
             <a acc="r<%= room.accomodationId %>" href="/accommodations/<%= room.Accomodation.code %>/<%= room.code %>">
-                <div class="room-img" style="background-image: url('/img/rooms/<%= room.code %>/<%= room.code %> room Alyasa Village (1).avif');">
+                <div class="room-img"
+                    style="background-image: url('/img/rooms/<%= room.code %>/<%= room.code %> room Alyasa Village (1).avif');">
                     <!--span>info info</span-->
                     <!--View Details -->
                 </div>
@@ -36,7 +115,7 @@
             <% } %>
     </div>
 
-    <script src="/script/acommodations.js"></script>
+    <script src="/script/acommodations.js" async></script>
 
 
     <%- include('partials/footer') %>
